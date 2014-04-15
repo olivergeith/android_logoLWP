@@ -15,4 +15,6 @@ public interface IBitmapDrawer {
 	public boolean supportsShowRand();
 
 	public boolean supportsLogo();
+
+	public boolean supportsFlip();
 }

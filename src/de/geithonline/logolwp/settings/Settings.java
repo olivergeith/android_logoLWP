@@ -620,4 +620,9 @@ public class Settings {
 		return defaultBmp;
 	}
 
+	public static boolean isFlip() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }

@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Paint.Align;
 import android.graphics.Path;
 import android.graphics.RectF;
 import de.geithonline.logolwp.settings.Settings;
@@ -38,6 +37,11 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 
 	@Override
 	public boolean supportsLogo() {
+		return true;
+	}
+
+	@Override
+	public boolean supportsFlip() {
 		return true;
 	}
 
@@ -83,7 +87,11 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 		bitmapCanvas.drawBitmap(bgBitmap, 0, 0, getGrayscalePaint());
 		// overpaint it with colored version
 		final Paint battPaint = getBitmapPaint(bgBitmap);
-		bitmapCanvas.drawArc(getRectForOffset(-bWidth / 2), 270, Math.round(level * 3.6f), true, battPaint);
+		if (Settings.isFlip()) {
+			bitmapCanvas.drawArc(getRectForOffset(-bWidth / 2), 270, Math.round(level * 3.6f), true, battPaint);
+		} else {
+			bitmapCanvas.drawArc(getRectForOffset(-bWidth / 2), 270, -Math.round(level * 3.6f), true, battPaint);
+		}
 		// zeiger
 		if (Settings.isShowZeiger()) {
 			drawZeiger(level);
@@ -92,37 +100,16 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 
 	}
 
-	private void drawScala() {
-		final Paint p = getTextScalePaint(fontSizeArc, Align.CENTER, true);
-		final RectF oval = getRectForOffset(offset + fontSizeArc);
-		for (int i = 0; i < 100; i = i + 5) {
-			final long winkel = 252 + Math.round(i * 3.6f);
-			final Path mArc = new Path();
-			mArc.addArc(oval, winkel, 36);
-			// bitmapCanvas.drawTextOnPath("" + i, mArc, 0, 0, p);
-			bitmapCanvas.drawArc(getRectForOffset(0), (float) (270f + i * 3.6 - 0.5f), 1f, true, p);
-		}
-		// delete inner Circle
-		bitmapCanvas.drawArc(getRectForOffset(offset), 0, 360, true, getErasurePaint());
-	}
-
-	private void drawScalaText() {
-		final Paint p = getTextScalePaint(fontSizeArc, Align.CENTER, true);
-		final RectF oval = getRectForOffset(offset + fontSizeArc);
-		for (int i = 0; i < 100; i = i + 5) {
-			final long winkel = 252 + Math.round(i * 3.6f);
-			final Path mArc = new Path();
-			mArc.addArc(oval, winkel, 36);
-			bitmapCanvas.drawTextOnPath("" + i, mArc, 0, 0, p);
-		}
-	}
-
 	private void drawZeiger(final int level) {
 		// Zeiger
 		if (Settings.isShowZeiger()) {
 			final Paint zp = getZeigerPaint(level);
 			zp.setShadowLayer(10, 0, 0, Color.BLACK);
-			bitmapCanvas.drawArc(getRectForOffset(0), 270 + Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
+			if (Settings.isFlip()) {
+				bitmapCanvas.drawArc(getRectForOffset(0), 270 + Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
+			} else {
+				bitmapCanvas.drawArc(getRectForOffset(0), 270 - Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
+			}
 			bitmapCanvas.drawArc(getRectForOffset(0), 270 - 0.75f, 1.5f, true, zp);
 		}
 	}
