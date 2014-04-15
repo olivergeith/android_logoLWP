@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <PreferenceCategory android:title="@string/category_font_options">
+        
+        <CheckBoxPreference 
+		    android:key="show_number"
+    		android:defaultValue="true"
+		    android:title="@string/show_number" 
+		    android:summary="@string/show_number_summary"
+            />
+        
+        <CheckBoxPreference 
+		    android:key="colored_numbers"
+    		android:defaultValue="true"
+		    android:title="@string/colored_numbers" 
+		    android:summary="@string/colored_numbers_summary"
+            />
+
+        <ListPreference
+            android:defaultValue="100"
+            android:title="@string/fontsize" 
+            android:summary="@string/fontsize_summary" 
+            android:dialogTitle="@string/fontsize"
+            android:entries="@array/fontsize"
+            android:entryValues="@array/fontsizeValues"
+            android:key="fontsize"
+            />
+        
+        <ListPreference
+            android:defaultValue="100"
+            android:title="@string/fontsize100" 
+            android:summary="@string/fontsize100_summary" 
+            android:dialogTitle="@string/fontsize100"
+            android:entries="@array/fontsize100"
+            android:entryValues="@array/fontsize100Values"
+            android:key="fontsize100"
+            />
+        
+	</PreferenceCategory>>
+    
+    <PreferenceCategory android:title="@string/category_scale_options">
+        <CheckBoxPreference 
+		    android:key="scale_numbers_transparent"
+    		android:defaultValue="true"
+		    android:title="@string/scale_numbers_transparent" 
+		    android:summary="@string/scale_numbers_transparent_summary"
+		    android:disableDependentsState="true"
+            />
+        
+	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+	        android:key="scale_color"
+	        android:title="@string/scale_color" 
+	        android:summary="@string/scale_color_summary"
+	        android:defaultValue="@integer/COLOR_WHITE"
+	        android:dependency="scale_numbers_transparent"
+	        />
+        	
+	</PreferenceCategory>>
+        
+    <PreferenceCategory 
+        android:title="@string/category_status_options">
+        <CheckBoxPreference 
+            android:key="show_status"
+            android:title="@string/show_status"
+            android:defaultValue="false"
+            />
+        <ListPreference
+	        android:defaultValue="0"
+	        android:title="@string/battStatusStyle" 
+            android:summary="@string/battStatusStyle_summary" 
+	        android:dialogTitle="@string/battStatusStyle"
+	        android:entries="@array/battStatusStyle"
+	        android:entryValues="@array/battStatusStyleValues"
+	        android:key="battStatusStyle"
+	        android:dependency="show_status"
+	        />
+	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+	        android:key="status_color"
+	        android:title="@string/status_color" 
+	        android:summary="@string/status_color_summary"
+	        android:defaultValue="@integer/COLOR_WHITE"
+	        android:dependency="show_status"
+	        />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:stylelistpreference="http://schemas.android.com/apk/res/de.geithonline.logolwp">
+ 
+    <PreferenceCategory 
+        android:title="@string/category_style"
+        android:summary="@string/category_style_summary">
+ <!--    
+        <ListPreference
+	        android:defaultValue="ZoopaWideV3"
+	        android:title="@string/style" 
+	        android:summary="@string/style_summary" 
+	        android:dialogTitle="Battery Style"
+	        android:entries="@array/styl"
+	        android:entryValues="@array/stylValues"
+	        android:key="batt_style"
+	        />
+ -->
+        <de.geithonline.logolwp.stylelistpreference.StyleListPreference
+	        android:key="batt_style"
+	        android:defaultValue="ZoopaWideV3"
+	        android:title="@string/style" 
+	        android:summary="@string/style_summary" 
+	        android:dialogTitle="Battery Style"
+	        android:entries="@array/prostyl"
+	        android:entryValues="@array/prostylValues"
+	        stylelistpreference:entryBooleans="@array/styl_booleans"
+	        
+	        />
+        
+        </PreferenceCategory>
+    <PreferenceCategory 
+        android:title="@string/category_size"
+        android:summary="@string/category_size_summary">
+        
+        <ListPreference
+            android:key="resizePortrait"
+            android:defaultValue="100"
+            android:title="@string/resizePortrait" 
+            android:summary="@string/resizePortrait_summary" 
+            android:dialogTitle="@string/resizePortrait"
+            android:entries="@array/resize"
+            android:entryValues="@array/resizeValues"
+            />
+        <ListPreference
+            android:key="resizeLandscape"
+            android:defaultValue="100"
+            android:title="@string/resizeLandscape" 
+            android:summary="@string/resizeLandscape_summary" 
+            android:dialogTitle="@string/resizeLandscape"
+            android:entries="@array/resize"
+            android:entryValues="@array/resizeValues"
+            />
+        
+        <CheckBoxPreference 
+            android:key="centerBattery"
+            android:title="@string/centerBattery"
+            android:summary="@string/centerBattery_summary"
+            android:defaultValue="true"
+            android:disableDependentsState="true"
+        	/>
+        
+        <EditTextPreference
+		    android:key="vertical_position"
+    		android:defaultValue="0"
+		    android:title="@string/vertical_position" 
+    		android:dialogTitle="@string/vertical_position"
+		    android:inputType="number"
+		    android:summary="@string/vertical_position_summary"
+		    android:dependency="centerBattery"
+         	/>
+        <EditTextPreference
+		    android:key="vertical_position_landscape"
+    		android:defaultValue="0"
+		    android:title="@string/vertical_position_landscape" 
+    		android:dialogTitle="@string/vertical_position_landscape"
+		    android:inputType="number"
+		    android:summary="@string/vertical_position_landscape_summary"
+		    android:dependency="centerBattery"
+         	/>
+        
+    </PreferenceCategory>
+        
+    <PreferenceCategory 
+        android:title="@string/category_style_options"
+        android:summary="@string/category_style_options_summary">
+        
+        
+        <CheckBoxPreference 
+            android:key="show_zeiger"
+            android:title="@string/show_zeiger"
+            android:defaultValue="true"
+            />
+        
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="color_zeiger"
+            android:title="@string/color_zeiger" 
+            android:summary="@string/color_zeiger_summary"
+            android:defaultValue="@integer/COLOR_WHITE"
+            />
+        <CheckBoxPreference 
+            android:key="show_rand"
+            android:title="@string/show_rand"
+            android:defaultValue="true"
+            />
+        
+        <CheckBoxPreference 
+            android:key="customLogo"
+            android:title="@string/customLogo"
+            android:defaultValue="false"
+            />
+        <Preference
+	        android:key="logoPicker"
+	        android:summary="@string/logoPicker_summary"
+	        android:title="@string/logoPicker"
+	        android:dependency="customLogo"
+	        />
+ 	    <Preference 
+		    android:key="howtoLogoLink"
+	        android:title="Howto use Logo"
+	        android:icon="@drawable/about"
+	        >
+	        <intent android:action="android.intent.action.VIEW"
+	            android:data="http://goo.gl/ZDMpmj" />
+	    </Preference>
+        
+        
+    </PreferenceCategory>
+        
+</PreferenceScreen>

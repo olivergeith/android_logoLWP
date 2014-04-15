@@ -1,0 +1,48 @@
+package de.geithonline.logolwp;
+
+import android.appwidget.AppWidgetManager;
+import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import de.geithonline.logolwp.settings.Settings;
+
+public class AboutFragment extends PreferenceFragment {
+	@Override
+	public void onCreate(final Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		getIdOfCurrentWidget(savedInstanceState);
+
+		addPreferencesFromResource(R.xml.preferences_about);
+		setSpecialThings();
+	}
+
+	private int getIdOfCurrentWidget(final Bundle savedInstanceState) {
+
+		final Bundle extras = getActivity().getIntent().getExtras();
+
+		int widgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
+		if (extras != null) {
+			widgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+		}
+
+		// If we have a Widget...we switch preferences to its preferences
+		if (widgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
+			// final PreferenceManager prefMgr = getPreferenceManager();
+			// final String prefsName = "Widget" + widgetId;
+			// prefMgr.setSharedPreferencesName(prefsName);
+			// prefMgr.setSharedPreferencesMode(PreferenceActivity.MODE_PRIVATE);
+		}
+		return widgetId;
+	}
+
+	private void setSpecialThings() {
+		if (Settings.prefs == null) {
+			Settings.prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+		}
+		final Preference proBox = findPreference("premium");
+
+	}
+
+}
