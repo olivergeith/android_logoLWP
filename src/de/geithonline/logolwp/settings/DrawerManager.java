@@ -5,7 +5,6 @@ import java.util.Map;
 
 import android.graphics.Bitmap;
 import de.geithonline.logolwp.bitmapdrawer.BitmapDrawerLogoV1;
-import de.geithonline.logolwp.bitmapdrawer.BitmapDrawerLogoV2;
 import de.geithonline.logolwp.bitmapdrawer.IBitmapDrawer;
 
 public class DrawerManager {
@@ -14,7 +13,7 @@ public class DrawerManager {
 
 	static {
 		drawer.put("LogoV1", new BitmapDrawerLogoV1());
-		drawer.put("LogoV2", new BitmapDrawerLogoV2());
+		drawer.put("LogoV2", new BitmapDrawerLogoV1());
 	}
 
 	public static IBitmapDrawer getDrawer(final String name) {

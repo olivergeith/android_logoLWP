@@ -15,8 +15,17 @@
     		android:defaultValue="true"
 		    android:title="@string/colored_numbers" 
 		    android:summary="@string/colored_numbers_summary"
+		    android:disableDependentsState="true"
             />
-
+	    
+	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+	        android:key="number_color"
+	        android:title="@string/number_color" 
+	        android:summary="@string/scale_color_summary"
+	        android:defaultValue="@integer/COLOR_WHITE"
+	        android:dependency="colored_numbers"
+	        />
+        
         <ListPreference
             android:defaultValue="100"
             android:title="@string/fontsize" 

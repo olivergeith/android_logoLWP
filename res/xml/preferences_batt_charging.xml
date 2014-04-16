@@ -46,25 +46,26 @@
 		    android:title="@string/charge_enable" 
 		    android:summary="@string/charge_enable_summary"
             />
-        
+  	    
+  	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+	        android:key="chargestatus_color"
+	        android:title="@string/chargestatus_color" 
+	        android:defaultValue="@integer/COLOR_WHITE"
+	        android:dependency="charge_enable"
+	        />
+       <ListPreference
+            android:key="chargestatus_radius"
+            android:defaultValue="80"
+            android:title="@string/chargestatus_radius" 
+            android:summary="@string/chargestatus_radius_summary" 
+            android:dialogTitle="@string/chargestatus_radius"
+            android:entries="@array/resize"
+            android:entryValues="@array/resizeValues"
+	        android:dependency="charge_enable"
+            />
+  	    
  	</PreferenceCategory>>
 
-  <PreferenceCategory android:title="@string/category_charge_colors">
-        <CheckBoxPreference 
-		    android:key="charge_colors_enable"
-    		android:defaultValue="false"
-		    android:title="@string/charge_colors_enable" 
-		    android:summary="@string/charge_colors_enable_summary"
-            />
- 	    <net.margaritov.preference.colorpicker.ColorPickerPreference
-	        android:key="charge_color"
-	        android:title="@string/charge_color" 
-	        android:summary="Battery --> Color on charge"
-	        android:defaultValue="@integer/COLOR_GREEN"
-	        android:dependency="charge_colors_enable"
-	        />
-        
- 	</PreferenceCategory>>
  
  
         

@@ -56,25 +56,26 @@
     <string name="show_zeiger">Show Pointer</string>
 	<string name="color_zeiger">Pointer Color</string>
     <string name="color_zeiger_summary">Some Batteries have a Pointer - set its color here</string>
-		
+    		
     <string name="header_title_battery">Battery Style</string>
 	<string name="header_summary_battery">Battery Style ....</string>
-	<string name="header_title_battery_options">Global Battery Options</string>
-	<string name="header_summary_battery_options">Colors, Opacity, ....</string>
+	<string name="header_title_battery_options">Colors</string>
+	<string name="header_summary_battery_options">Re-Coloring... </string>
 	<string name="header_title_background_options">Wallpaper Background</string>
 	<string name="header_summary_background_options">Choose custom Wallpaper from Gallery....</string>
     <string name="header_about_options">About</string>
     <string name="header_about_options_summary">Info, Links and more about this App....</string>
 	<string name="header_title_charge_options">Charge Options</string>
 	<string name="header_summary_charge_options">Options defining the behaviour on charge...</string>
-	<string name="header_title_number_options">Text Options</string>
-	<string name="header_summary_number_options">Battery: Level, Fontsize, Statusinformation ....</string>
+	<string name="header_title_number_options">Level Number Options</string>
+	<string name="header_summary_number_options">Level-Number, Color, Fontsize, Scala, Statusinformation ....</string>
 	
     <string name="threshold_low">Threshold for low battery</string>
 	<string name="threshold_low_summary">Threshold for low battery levels</string>
 	<string name="threshold_mid">Threshold for mid battery</string>
 	<string name="threshold_mid_summary">Threshold for mid battery levels</string>
 
+	<string name="number_color">Level-Number-Color</string>
 	<string name="colored_numbers">Numbers are colored</string>
 	<string name="colored_numbers_summary">Numbers are colored like Battery-Level-Color</string>
 	<string name="show_number">Show Battery-Level-Numbers</string>
@@ -97,6 +98,7 @@
 	<string name="ChargingAC">Charging on AC</string>
 	<string name="charge_enable">Show Charge Status</string>
 	<string name="charge_enable_summary">Show if AC/USB-Charging</string>
+	<string name="chargestatus_color">Color of Charge Status</string>
 	<string name="charge_colors_enable">Use different color on charge</string>
 	<string name="charge_colors_enable_summary">Use different color on charge</string>
 	<string name="charge_color">Color on charge</string>
@@ -118,7 +120,9 @@
 	<string name="scale_color_summary">Color of Scale Numbers</string>
 	<string name="status_color">Battery Status Text Color</string>
 	<string name="status_color_summary">Color of Battery Status Text</string>
-
+	<string name="chargestatus_radius">Radius of Chargestatus Text</string>
+	<string name="chargestatus_radius_summary">The Radius, where the Charge-Status-Text should circle</string>
+	
 	<string name="keepAspectRatio">Keep the aspect ratio of the Background Image</string>
 	<string name="keepAspectRatio_summary">If disabled the image is scaled to exact dimensions of the screen (no background sliding in that case)</string>
 

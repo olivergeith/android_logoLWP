@@ -4,17 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.RectF;
 import de.geithonline.logolwp.settings.Settings;
 
 public class BitmapDrawerLogoV1 extends BitmapDrawer {
 
 	private int offset = 10;
-	private final float gap = 0.6f;
 	private int fontSize = 150;
 	private int fontSizeArc = 20;
-	private int einerDicke = 70;
 	private Canvas bitmapCanvas;
 	private Bitmap bgBitmap = null;
 	private String logoname = null;
@@ -63,7 +59,6 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 		offset = Math.round(bWidth * 0.021f);
 		fontSize = Math.round(bWidth * 0.35f);
 		fontSizeArc = Math.round(bWidth * 0.05f);
-		einerDicke = Math.round(bWidth * 0.10f);
 
 		drawSegmente(level);
 
@@ -71,10 +66,6 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 	}
 
 	private void drawSegmente(final int level) {
-		// Scala
-		// drawScala();
-		// load logo
-
 		if (logoname == null || !logoname.equals(Settings.getCustomLogoFilePath()) || myWidth != bWidth || myHeight != bHeight
 				|| customLogo != Settings.useCustomLogo()) {
 			customLogo = Settings.useCustomLogo();
@@ -93,10 +84,7 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 			bitmapCanvas.drawArc(getRectForOffset(-bWidth / 2), 270, -Math.round(level * 3.6f), true, battPaint);
 		}
 		// zeiger
-		if (Settings.isShowZeiger()) {
-			drawZeiger(level);
-		}
-		// drawScalaText();
+		drawZeiger(level);
 
 	}
 
@@ -116,28 +104,17 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 
 	@Override
 	public void drawChargeStatusText(final int level) {
-		final float startwinkel = 272f + Math.round(level * 3.6f);
-
-		final Path mArc = new Path();
-		final RectF oval = getRectForOffset(offset + fontSizeArc + fontSizeArc);
-		mArc.addArc(oval, startwinkel, 180);
-		final String text = Settings.getChargingText();
-		bitmapCanvas.drawTextOnPath(text, mArc, 0, 0, getTextPaint(level, fontSizeArc));
+		drawChargeStatusText(bitmapCanvas, level, fontSizeArc);
 	}
 
 	@Override
 	public void drawLevelNumber(final int level) {
-		drawLevelNumberCentered(bitmapCanvas, level, fontSize, false);
-	}
-
-	private RectF getRectForOffset(final int offset) {
-		return new RectF(offset, offset, bWidth - offset, bHeight - offset);
+		drawLevelNumberCentered(bitmapCanvas, level, fontSize, true);
 	}
 
 	@Override
 	public void drawBattStatusText() {
-		// TODO Auto-generated method stub
-
+		drawBattStatusTextBottom(bitmapCanvas, fontSizeArc, true);
 	}
 
 }

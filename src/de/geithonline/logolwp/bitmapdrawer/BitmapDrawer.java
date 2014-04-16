@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
+import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -101,18 +102,23 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 		return icon;
 	}
 
-	protected void drawLevelNumberCentered(final Canvas canvas, final int level, final int fontSize) {
-		drawLevelNumberCentered(canvas, level, fontSize, false);
-	}
-
 	protected void drawLevelNumberCentered(final Canvas canvas, final int level, final int fontSize, final boolean dropShadow) {
 		final String text = "" + level;
-		final Paint p = getNumberPaint(level, fontSize, Align.CENTER, true, false);
+		final Paint paint = getNumberPaint(level, fontSize, Align.CENTER, true, false);
 		if (dropShadow) {
-			p.setShadowLayer(10, 0, 0, Color.BLACK);
+			paint.setShadowLayer(10, 0, 0, Color.BLACK);
 		}
-		final PointF point = getTextCenterToDraw(new RectF(0, 0, bWidth, bHeight), p);
-		canvas.drawText(text, point.x, point.y, p);
+		final PointF point = getTextCenterToDraw(new RectF(0, 0, bWidth, bHeight), paint);
+		canvas.drawText(text, point.x, point.y, paint);
+	}
+
+	protected void drawBattStatusTextBottom(final Canvas canvas, final int fontSize, final boolean dropShadow) {
+		final String text = Settings.getBattStatusCompleteShort();
+		final Paint paint = getTextBattStatusPaint(fontSize, Align.CENTER, true);
+		if (dropShadow) {
+			paint.setShadowLayer(10, 0, 0, Color.BLACK);
+		}
+		canvas.drawText(text, bWidth / 2, bHeight - Math.round(bWidth * 0.01f), paint);
 	}
 
 	protected void drawLevelNumberBottom(final Canvas canvas, final int level, final int fontSize) {
@@ -126,6 +132,26 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 		final float x = region.centerX();
 		final float y = region.centerY() + textBounds.height() * 0.5f;
 		return new PointF(x, y);
+	}
+
+	protected void drawChargeStatusText(final Canvas canvas, final int level, final int fontSize) {
+		final float startwinkel = 272f + Math.round(level * 3.6f);
+		final int radius = Math.round((bWidth / 2 - fontSize) * Settings.getChargeStatusRadiusFactor());
+		final Path mArc = new Path();
+		final RectF oval = getRectForRadius(radius);
+		mArc.addArc(oval, startwinkel, 180);
+		final String text = Settings.getChargingText();
+		canvas.drawTextOnPath(text, mArc, 0, 0, getChargeStatusPaint(level, fontSize, Align.LEFT, true, false, true));
+	}
+
+	protected RectF getRectForRadius(final int radius) {
+		final int centerX = bWidth / 2;
+		final int centerY = bHeight / 2;
+		return new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+	}
+
+	protected RectF getRectForOffset(final int offset) {
+		return new RectF(offset, offset, bWidth - offset, bHeight - offset);
 	}
 
 	public int getcHeight() {

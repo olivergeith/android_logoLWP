@@ -5,17 +5,7 @@
     <PreferenceCategory 
         android:title="@string/category_style"
         android:summary="@string/category_style_summary">
- <!--    
-        <ListPreference
-	        android:defaultValue="ZoopaWideV3"
-	        android:title="@string/style" 
-	        android:summary="@string/style_summary" 
-	        android:dialogTitle="Battery Style"
-	        android:entries="@array/styl"
-	        android:entryValues="@array/stylValues"
-	        android:key="batt_style"
-	        />
- -->
+
         <de.geithonline.logolwp.stylelistpreference.StyleListPreference
 	        android:key="batt_style"
 	        android:defaultValue="ZoopaWideV3"
@@ -111,13 +101,6 @@
             android:defaultValue="false"
             />
   
-        <CheckBoxPreference 
-            android:key="recolor"
-            android:title="@string/recolor"
-            android:summary="@string/recolor_summary"
-            android:defaultValue="false"
-            />
-        
         <CheckBoxPreference 
             android:key="customLogo"
             android:title="@string/customLogo"

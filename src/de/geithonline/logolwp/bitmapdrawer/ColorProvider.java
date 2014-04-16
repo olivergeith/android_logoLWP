@@ -80,9 +80,9 @@ public class ColorProvider {
 		if (Settings.isColoredNumber()) {
 			paint.setColor(getColorForLevel(level));
 		} else {
-			paint.setColor(Settings.getBattColor());
+			paint.setColor(Settings.getNumberColor());
 		}
-		paint.setAlpha(Settings.getOpacity());
+		paint.setAlpha(255);
 		final int fSize = adjustFontSize(level, fontSize);
 		paint.setTextSize(fSize);
 		paint.setFakeBoldText(true);
@@ -111,7 +111,7 @@ public class ColorProvider {
 		} else {
 			paint.setColor(Settings.getBattColor());
 		}
-		paint.setAlpha(Settings.getOpacity());
+		paint.setAlpha(255);
 		paint.setAntiAlias(true);
 		paint.setTextSize(fontSize);
 		paint.setFakeBoldText(true);
@@ -125,6 +125,31 @@ public class ColorProvider {
 			final PorterDuffXfermode xfermode = new PorterDuffXfermode(Mode.CLEAR);
 			paint.setXfermode(xfermode);
 		}
+		return paint;
+	}
+
+	public Paint getChargeStatusPaint(final int level, final int fontSize, final Align align, final boolean bold, final boolean erase, final boolean dropShadow) {
+		final Paint paint = new Paint();
+		paint.setAntiAlias(true);
+		paint.setColor(Settings.getChargeStatusColor());
+		paint.setAlpha(255);
+		paint.setAntiAlias(true);
+		paint.setTextSize(fontSize);
+		paint.setFakeBoldText(true);
+		if (bold) {
+			paint.setTypeface(Typeface.DEFAULT_BOLD);
+		} else {
+			paint.setTypeface(Typeface.DEFAULT);
+		}
+		paint.setTextAlign(align);
+		if (erase) {
+			final PorterDuffXfermode xfermode = new PorterDuffXfermode(Mode.CLEAR);
+			paint.setXfermode(xfermode);
+		}
+		if (dropShadow) {
+			paint.setShadowLayer(10, 0, 0, Color.BLACK);
+		}
+
 		return paint;
 	}
 
@@ -142,22 +167,8 @@ public class ColorProvider {
 		final Paint paint = new Paint();
 		paint.setAntiAlias(true);
 		paint.setColor(getColorForLevel(level));
-		paint.setAlpha(Settings.getOpacity());
+		paint.setAlpha(255);
 		paint.setStyle(Style.FILL);
-		return paint;
-	}
-
-	public Paint getBatteryPaintSourceIn(final int level) {
-		final Paint paint = getBatteryPaint(level);
-		final PorterDuffXfermode xfermode = new PorterDuffXfermode(Mode.SRC_IN);
-		// because of SRC in the alphas of background and overpaint somhow "add"
-		// so the SRC in must be mor opacid then normal
-		int alpha = Settings.getOpacity() + Settings.getBackgroundOpacity();
-		if (alpha > 255) {
-			alpha = 255;
-		}
-		paint.setAlpha(alpha);
-		paint.setXfermode(xfermode);
 		return paint;
 	}
 
@@ -175,15 +186,6 @@ public class ColorProvider {
 		if (dropShadow) {
 			paint.setShadowLayer(10, 0, 0, Color.BLACK);
 		}
-		return paint;
-	}
-
-	public Paint getBackgroundPaint() {
-		final Paint paint = new Paint();
-		paint.setAntiAlias(true);
-		paint.setColor(Settings.getBackgroundColor());
-		paint.setAlpha(Settings.getBackgroundOpacity());
-		paint.setStyle(Style.FILL);
 		return paint;
 	}
 

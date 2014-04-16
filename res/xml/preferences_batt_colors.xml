@@ -3,23 +3,33 @@
     
     <PreferenceCategory android:title="@string/category_battery_options">
 
+         <CheckBoxPreference 
+            android:key="recolor"
+            android:title="@string/recolor"
+            android:summary="@string/recolor_summary"
+            android:defaultValue="false"
+            />
+ 
 	    <net.margaritov.preference.colorpicker.ColorPickerPreference
 	        android:key="battery_color"
 	        android:title="@string/color" 
 	        android:summary="Battery --> Color"
 	        android:defaultValue="@integer/COLOR_WHITE"
+	        android:dependency="recolor"
 	        />
 	    <net.margaritov.preference.colorpicker.ColorPickerPreference
 	        android:key="battery_color_mid"
 	        android:title="Color (mid level)" 
 	        android:summary="Battery --> Color (mid level)"
 	        android:defaultValue="@integer/COLOR_ORANGE"
+	        android:dependency="recolor"
 	        />
 	    <net.margaritov.preference.colorpicker.ColorPickerPreference
 	        android:key="battery_color_low"
 	        android:title="Color (low level)" 
 	        android:summary="Battery --> Color (low level)"
 	        android:defaultValue="@integer/COLOR_RED"
+	        android:dependency="recolor"
 	        />
         
         <CheckBoxPreference 
@@ -27,24 +37,16 @@
     		android:defaultValue="false"
 		    android:title="@string/gradient_colors" 
 		    android:summary="@string/gradient_colors_summary"
+	        android:dependency="recolor"
             />
         <CheckBoxPreference 
 		    android:key="gradient_colors_mid"
     		android:defaultValue="false"
 		    android:title="@string/gradient_colors_mid" 
 		    android:summary="@string/gradient_colors_mid_summary"
+	        android:dependency="recolor"
             />
         	    	    
-        <ListPreference
-	        android:defaultValue="128"
-	        android:title="@string/opacity" 
-            android:summary="@string/opacity_summary" 
-	        android:dialogTitle="Battery --> Opacity"
-	        android:entries="@array/opacities"
-	        android:entryValues="@array/opacitiesValues"
-	        android:key="opacity"
-	        />
-        
         <EditTextPreference
 		    android:key="threshold_mid"
     		android:defaultValue="30"
@@ -52,6 +54,7 @@
     		android:dialogTitle="@string/threshold_mid"
 		    android:inputType="number"
 		    android:summary="@string/threshold_mid_summary"
+	        android:dependency="recolor"
          	/>
         <EditTextPreference
 		    android:key="threshold_low"
@@ -60,30 +63,25 @@
     		android:dialogTitle="@string/threshold_low"
 		    android:inputType="number"
 		    android:summary="@string/threshold_low_summary"
+	        android:dependency="recolor"
          	/>
     </PreferenceCategory>>
-        
-    <PreferenceCategory android:title="@string/category_battery_background_options">
-        
-	        <!-- alphaSlider="true" -->
-	    <net.margaritov.preference.colorpicker.ColorPickerPreference
-	        android:key="background_color"
-	        android:title="@string/color" 
-	        android:summary="Battery-Background --> Color"
-	        android:defaultValue="@integer/COLOR_DARKGRAY"
+  	<PreferenceCategory android:title="@string/category_charge_colors">
+        <CheckBoxPreference 
+		    android:key="charge_colors_enable"
+    		android:defaultValue="true"
+		    android:title="@string/charge_colors_enable" 
+		    android:summary="@string/charge_colors_enable_summary"
+	        android:dependency="recolor"
+            />
+ 	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+	        android:key="charge_color"
+	        android:title="@string/charge_color" 
+	        android:summary="Battery --> Color on charge"
+	        android:defaultValue="@integer/COLOR_GREEN"
+	        android:dependency="charge_colors_enable"
 	        />
-	    
-	    <ListPreference
-	        android:key="background_opacity"
-	        android:title="@string/opacity" 
-	        android:summary="@string/opacity_summary" 
-	        android:dialogTitle="Battery-Background --> Opacity"
-	        android:defaultValue="128"
-	        android:entries="@array/opacities"
-	        android:entryValues="@array/opacitiesValues"
-	        />
-	    	    
-	</PreferenceCategory>>
-
+        
+ 	</PreferenceCategory>>
 
 </PreferenceScreen>

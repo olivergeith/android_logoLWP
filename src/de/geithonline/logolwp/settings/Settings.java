@@ -86,15 +86,15 @@ public class Settings {
 
 	public static String getBattStatusCompleteShort() {
 		switch (getStatusStyle()) {
-			case BATT_STATUS_STYLE_VOLT:
-				return "Battery: " + (float) (battVoltage / 10) / 100 + "V";
-			case BATT_STATUS_STYLE_TEMP:
-				return "Battery: " + (float) battTemperature / 10 + "°C";
-			case BATT_STATUS_STYLE_TEMP_VOLT:
-				return "Battery: " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
-			default:
-			case BATT_STATUS_STYLE_TEMP_VOLT_HEALTH:
-				return "Battery: health " + getHealthText(battHealth) + ", " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
+		case BATT_STATUS_STYLE_VOLT:
+			return "Battery: " + (float) (battVoltage / 10) / 100 + "V";
+		case BATT_STATUS_STYLE_TEMP:
+			return "Battery: " + (float) battTemperature / 10 + "°C";
+		case BATT_STATUS_STYLE_TEMP_VOLT:
+			return "Battery: " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
+		default:
+		case BATT_STATUS_STYLE_TEMP_VOLT_HEALTH:
+			return "Battery: health " + getHealthText(battHealth) + ", " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
 		}
 	}
 
@@ -112,21 +112,21 @@ public class Settings {
 
 	private static String getHealthText(final int health) {
 		switch (health) {
-			case BatteryManager.BATTERY_HEALTH_GOOD:
-				return "good";
-			case BatteryManager.BATTERY_HEALTH_OVERHEAT:
-				return "overheat";
-			case BatteryManager.BATTERY_HEALTH_DEAD:
-				return "dead";
-			case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE:
-				return "overvoltage";
-			case BatteryManager.BATTERY_HEALTH_COLD:
-				return "cold";
-			case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE:
-				return "failure";
+		case BatteryManager.BATTERY_HEALTH_GOOD:
+			return "good";
+		case BatteryManager.BATTERY_HEALTH_OVERHEAT:
+			return "overheat";
+		case BatteryManager.BATTERY_HEALTH_DEAD:
+			return "dead";
+		case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE:
+			return "overvoltage";
+		case BatteryManager.BATTERY_HEALTH_COLD:
+			return "cold";
+		case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE:
+			return "failure";
 
-			default:
-				return "unknown";
+		default:
+			return "unknown";
 		}
 	}
 
@@ -142,6 +142,22 @@ public class Settings {
 			return true;
 		}
 		return prefs.getBoolean("show_number", true);
+	}
+
+	public static int getNumberColor() {
+		if (prefs == null) {
+			return R.integer.COLOR_WHITE;
+		}
+		final int col = prefs.getInt("number_color", R.integer.COLOR_WHITE);
+		return col;
+	}
+
+	public static int getChargeStatusColor() {
+		if (prefs == null) {
+			return R.integer.COLOR_WHITE;
+		}
+		final int col = prefs.getInt("chargestatus_color", R.integer.COLOR_WHITE);
+		return col;
 	}
 
 	public static int getChargeColor() {
@@ -300,30 +316,6 @@ public class Settings {
 		}
 		final int thr = Integer.valueOf(prefs.getString("threshold_low", "10"));
 		return thr;
-	}
-
-	public static int getOpacity() {
-		if (prefs == null) {
-			return 128;
-		}
-		final int op = Integer.valueOf(prefs.getString("opacity", "128"));
-		return op;
-	}
-
-	public static int getBackgroundOpacity() {
-		if (prefs == null) {
-			return 128;
-		}
-		final int op = Integer.valueOf(prefs.getString("background_opacity", "128"));
-		return op;
-	}
-
-	public static int getBackgroundColor() {
-		if (prefs == null) {
-			return R.integer.COLOR_DARKGRAY;
-		}
-		final int col = prefs.getInt("background_color", R.integer.COLOR_DARKGRAY);
-		return col;
 	}
 
 	public static int getBattColor() {
@@ -574,6 +566,14 @@ public class Settings {
 			return 1.0f;
 		}
 		final int size = Integer.valueOf(prefs.getString("resizeLandscape", "100"));
+		return size / 100f;
+	}
+
+	public static float getChargeStatusRadiusFactor() {
+		if (prefs == null) {
+			return 1.0f;
+		}
+		final int size = Integer.valueOf(prefs.getString("chargestatus_radius", "80"));
 		return size / 100f;
 	}
 
