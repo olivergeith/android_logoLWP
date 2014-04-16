@@ -8,7 +8,6 @@ import de.geithonline.logolwp.settings.Settings;
 
 public class BitmapDrawerLogoV1 extends BitmapDrawer {
 
-	private int offset = 10;
 	private int fontSize = 150;
 	private int fontSizeArc = 20;
 	private Canvas bitmapCanvas;
@@ -56,7 +55,6 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 		final Bitmap bitmap = Bitmap.createBitmap(bWidth, bHeight, Bitmap.Config.ARGB_8888);
 		bitmapCanvas = new Canvas(bitmap);
 
-		offset = Math.round(bWidth * 0.021f);
 		fontSize = Math.round(bWidth * 0.35f);
 		fontSizeArc = Math.round(bWidth * 0.05f);
 

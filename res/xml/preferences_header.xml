@@ -17,6 +17,11 @@
             android:icon="@drawable/number"
             android:title="@string/header_title_number_options"
             android:summary="@string/header_summary_number_options" />
+
+    <header android:fragment="de.geithonline.logolwp.BattStatusPreferencesFragment"
+            android:icon="@drawable/status"
+            android:title="@string/header_title_battstatus_options"
+            android:summary="@string/header_summary_battstatus_options" />
     
     <header android:fragment="de.geithonline.logolwp.BattChargingPreferencesFragment"
             android:icon="@drawable/charge"

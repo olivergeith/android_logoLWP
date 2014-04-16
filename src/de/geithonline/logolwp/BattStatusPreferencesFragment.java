@@ -3,10 +3,10 @@ package de.geithonline.logolwp;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
-public class BattNumberPreferencesFragment extends PreferenceFragment {
+public class BattStatusPreferencesFragment extends PreferenceFragment {
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.preferences_batt_number);
+		addPreferencesFromResource(R.xml.preferences_batt_status);
 	}
 }

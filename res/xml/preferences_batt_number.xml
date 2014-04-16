@@ -16,6 +16,7 @@
 		    android:title="@string/colored_numbers" 
 		    android:summary="@string/colored_numbers_summary"
 		    android:disableDependentsState="true"
+	        android:dependency="show_number"
             />
 	    
 	    <net.margaritov.preference.colorpicker.ColorPickerPreference
@@ -34,6 +35,7 @@
             android:entries="@array/fontsize"
             android:entryValues="@array/fontsizeValues"
             android:key="fontsize"
+	        android:dependency="show_number"
             />
         
         <ListPreference
@@ -44,10 +46,11 @@
             android:entries="@array/fontsize100"
             android:entryValues="@array/fontsize100Values"
             android:key="fontsize100"
+	        android:dependency="show_number"
             />
         
 	</PreferenceCategory>>
-    
+<!--     
     <PreferenceCategory android:title="@string/category_scale_options">
         <CheckBoxPreference 
 		    android:key="scale_numbers_transparent"
@@ -66,32 +69,6 @@
 	        />
         	
 	</PreferenceCategory>>
-        
-    <PreferenceCategory 
-        android:title="@string/category_status_options">
-        <CheckBoxPreference 
-            android:key="show_status"
-            android:title="@string/show_status"
-            android:defaultValue="false"
-            />
-        <ListPreference
-	        android:defaultValue="0"
-	        android:title="@string/battStatusStyle" 
-            android:summary="@string/battStatusStyle_summary" 
-	        android:dialogTitle="@string/battStatusStyle"
-	        android:entries="@array/battStatusStyle"
-	        android:entryValues="@array/battStatusStyleValues"
-	        android:key="battStatusStyle"
-	        android:dependency="show_status"
-	        />
-	    <net.margaritov.preference.colorpicker.ColorPickerPreference
-	        android:key="status_color"
-	        android:title="@string/status_color" 
-	        android:summary="@string/status_color_summary"
-	        android:defaultValue="@integer/COLOR_WHITE"
-	        android:dependency="show_status"
-	        />
-    </PreferenceCategory>
-
+-->   
 
 </PreferenceScreen>
