@@ -16,7 +16,7 @@ public class BitmapHelper {
 
 	public static void saveBitmap(final Bitmap bitmap, final String style, final int level) {
 		String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
-		extStorageDirectory += File.separator + "Pictures" + File.separator + style + File.separator;
+		extStorageDirectory += File.separator + "Pictures" + File.separator + "LogoBatteryLWP" + File.separator;
 		final String filename = style + "_" + level + ".png";
 		OutputStream outStream = null;
 		// Ordner anlegen fal snicht vorhanden
