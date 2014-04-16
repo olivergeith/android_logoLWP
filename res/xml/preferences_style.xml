@@ -103,6 +103,20 @@
             android:title="@string/show_rand"
             android:defaultValue="true"
             />
+
+        <CheckBoxPreference 
+            android:key="flip"
+            android:title="@string/flip"
+            android:summary="@string/flip_summary"
+            android:defaultValue="false"
+            />
+  
+        <CheckBoxPreference 
+            android:key="recolor"
+            android:title="@string/recolor"
+            android:summary="@string/recolor_summary"
+            android:defaultValue="false"
+            />
         
         <CheckBoxPreference 
             android:key="customLogo"

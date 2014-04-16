@@ -621,8 +621,17 @@ public class Settings {
 	}
 
 	public static boolean isFlip() {
-		// TODO Auto-generated method stub
-		return true;
+		if (prefs == null) {
+			return false;
+		}
+		return prefs.getBoolean("flip", false);
+	}
+
+	public static boolean isReColorBitmap() {
+		if (prefs == null) {
+			return false;
+		}
+		return prefs.getBoolean("recolor", false);
 	}
 
 }

@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader.TileMode;
 import android.graphics.Typeface;
@@ -250,4 +251,16 @@ public class ColorProvider {
 		return paint;
 	}
 
+	protected Paint getBitmapPaint(final int level, final Bitmap bitmap) {
+		final Paint paint = new Paint();
+		final BitmapShader fillBMPshader = new BitmapShader(bitmap, TileMode.REPEAT, TileMode.REPEAT);
+		paint.setStyle(Paint.Style.FILL);
+		paint.setShader(fillBMPshader);
+		if (Settings.isReColorBitmap()) {
+			final int color = getColorForLevel(level);
+			final PorterDuffColorFilter cf = new PorterDuffColorFilter(color, Mode.MULTIPLY);
+			paint.setColorFilter(cf);
+		}
+		return paint;
+	}
 }

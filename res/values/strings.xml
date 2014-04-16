@@ -49,6 +49,10 @@
     <string name="style">Battery Style</string>
 	<string name="style_summary">Choose a Battery Style</string>
 	<string name="color">Color</string>
+    <string name="flip">Flip</string>
+    <string name="flip_summary">Sweep arch clockwise or counterclockwise</string>
+    <string name="recolor">Re-Color</string>
+    <string name="recolor_summary">Recolor Logo to defined Battery-Colors</string>
     <string name="show_zeiger">Show Pointer</string>
 	<string name="color_zeiger">Pointer Color</string>
     <string name="color_zeiger_summary">Some Batteries have a Pointer - set its color here</string>
@@ -120,7 +124,7 @@
 
 	<string name="customLogo">Use custom Logo</string>
 	<string name="logoPicker">Logo Image</string>
-	<string name="logoPicker_summary">Pick a custome logo as battery-image....the Logo should be a square image and around 500x500 pixel for best results!</string>
+	<string name="logoPicker_summary">Pick a custom logo as battery-image....the Logo should be a square image and around 500x500 pixel for best results!</string>
 														
 	
 </resources>

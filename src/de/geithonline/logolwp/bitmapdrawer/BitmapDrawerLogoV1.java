@@ -86,7 +86,7 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 		// paint grayscaled version of it
 		bitmapCanvas.drawBitmap(bgBitmap, 0, 0, getGrayscalePaint());
 		// overpaint it with colored version
-		final Paint battPaint = getBitmapPaint(bgBitmap);
+		final Paint battPaint = getBitmapPaint(level, bgBitmap);
 		if (Settings.isFlip()) {
 			bitmapCanvas.drawArc(getRectForOffset(-bWidth / 2), 270, Math.round(level * 3.6f), true, battPaint);
 		} else {

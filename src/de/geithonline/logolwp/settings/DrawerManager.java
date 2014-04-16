@@ -20,7 +20,7 @@ public class DrawerManager {
 	public static IBitmapDrawer getDrawer(final String name) {
 		IBitmapDrawer d = drawer.get(name);
 		if (d == null) {
-			d = drawer.get("ZoopaWideV1");
+			d = drawer.get("LogoV1");
 		}
 		return d;
 	}
