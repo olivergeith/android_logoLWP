@@ -47,13 +47,13 @@
 		    android:summary="@string/charge_enable_summary"
             />
   	    
-  	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+  	    <de.geithonline.android.basics.preferences.colorpicker.ColorPickerPreference
 	        android:key="chargestatus_color"
 	        android:title="@string/chargestatus_color" 
 	        android:defaultValue="@integer/COLOR_WHITE"
 	        android:dependency="charge_enable"
 	        />
-       <net.jayschwa.android.preference.SliderPreference
+       <de.geithonline.android.basics.preferences.SliderPreference
     		android:key="chargestatus_radius"
 		    android:title="@string/chargestatus_radius"
 		    android:defaultValue="0.8"

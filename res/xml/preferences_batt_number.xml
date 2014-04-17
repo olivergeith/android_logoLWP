@@ -19,7 +19,7 @@
 	        android:dependency="show_number"
             />
 	    
-	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+	    <de.geithonline.android.basics.preferences.colorpicker.ColorPickerPreference
 	        android:key="number_color"
 	        android:title="@string/number_color" 
 	        android:summary="@string/scale_color_summary"
@@ -60,7 +60,7 @@
 		    android:disableDependentsState="true"
             />
         
-	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+	    <de.geithonline.android.basics.preferences.colorpicker.ColorPickerPreference
 	        android:key="scale_color"
 	        android:title="@string/scale_color" 
 	        android:summary="@string/scale_color_summary"

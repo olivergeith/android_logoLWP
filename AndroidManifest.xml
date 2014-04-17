@@ -57,8 +57,9 @@
             </intent-filter>
             
         </activity>
-        <activity  android:name="net.margaritov.preference.colorpicker.ColorPickerPreference" />
-        
+ <!-- 
+        <activity  android:name="de.geithonline.android.basics.preferences.colorpicker.ColorPickerPreference" />
+       -->  
 
     </application>
 

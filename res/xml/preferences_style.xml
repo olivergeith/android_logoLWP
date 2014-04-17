@@ -24,12 +24,12 @@
         android:summary="@string/category_size_summary">
         
 
-        <net.jayschwa.android.preference.SliderPreference
+        <de.geithonline.android.basics.preferences.SliderPreference
     		android:key="resizePortrait"
 		    android:title="@string/resizePortrait"
 		    android:defaultValue="1.0"
 		    android:dialogMessage="@string/resizePortrait" />
-       <net.jayschwa.android.preference.SliderPreference
+       <de.geithonline.android.basics.preferences.SliderPreference
     		android:key="resizeLandscape"
 		    android:title="@string/resizeLandscape"
 		    android:defaultValue="1.0"
@@ -95,14 +95,14 @@
             android:defaultValue="true"
             />
         
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
+        <de.geithonline.android.basics.preferences.colorpicker.ColorPickerPreference
             android:key="color_zeiger"
             android:title="@string/color_zeiger" 
             android:summary="@string/color_zeiger_summary"
             android:defaultValue="@integer/COLOR_WHITE"
             />
         
-        <net.jayschwa.android.preference.SliderPreference
+        <de.geithonline.android.basics.preferences.SliderPreference
     		android:key="zeiger_length"
 		    android:title="@string/zeiger_length"
 		    android:defaultValue="1.0"
