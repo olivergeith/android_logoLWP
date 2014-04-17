@@ -121,6 +121,16 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 		canvas.drawText(text, bWidth / 2, bHeight - Math.round(bWidth * 0.01f), paint);
 	}
 
+	public void drawBattStatusTextBottomRound(final Canvas canvas, final int fontSize, final boolean dropShadow) {
+		final Path mArc = new Path();
+		final int radius = Math.round((bWidth / 2) * Settings.getBattStatusRadiusFactor());
+		final RectF oval = getRectForRadius(radius);
+		mArc.addArc(oval, 225, -270);
+		final String text = Settings.getBattStatusCompleteShort();
+		final Paint p = getTextBattStatusPaint(fontSize, Align.CENTER, true);
+		canvas.drawTextOnPath(text, mArc, 0, 0, p);
+	}
+
 	protected void drawLevelNumberBottom(final Canvas canvas, final int level, final int fontSize) {
 		final Paint p = getNumberPaint(level, fontSize, Align.CENTER, true, false);
 		canvas.drawText("" + level, bWidth / 2, bHeight - Math.round(bWidth * 0.01f), p);
@@ -139,7 +149,7 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 		final int radius = Math.round((bWidth / 2 - fontSize) * Settings.getChargeStatusRadiusFactor());
 		final Path mArc = new Path();
 		final RectF oval = getRectForRadius(radius);
-		mArc.addArc(oval, startwinkel, 180);
+		mArc.addArc(oval, startwinkel, 355);
 		final String text = Settings.getChargingText();
 		canvas.drawTextOnPath(text, mArc, 0, 0, getChargeStatusPaint(level, fontSize, Align.LEFT, true, false, true));
 	}

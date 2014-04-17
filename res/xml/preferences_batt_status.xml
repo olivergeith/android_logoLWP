@@ -25,6 +25,13 @@
 	        android:defaultValue="@integer/COLOR_WHITE"
 	        android:dependency="show_status"
 	        />
+	    
+	    <de.geithonline.android.basics.preferences.SliderPreference
+    		android:key="battstatus_radius"
+		    android:title="@string/battstatus_radius"
+		    android:defaultValue="0.8"
+		    android:dialogMessage="@string/battstatus_radius" />
+	    
     </PreferenceCategory>
 
 

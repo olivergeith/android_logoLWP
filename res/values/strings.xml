@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_version">1.0</string>
-    <string name="app_name">LogoBatteryLWP V1.0</string>
-	<string name="wallpaper_description">LogoBatteryLWP V1.0</string>
+	<string name="app_version">1.1</string>
+    <string name="app_name">LogoBatteryLWP V1.1</string>
+	<string name="wallpaper_description">LogoBatteryLWP V1.1</string>
 
 	<string name="premium_only">Premium Version only</string>
 	
@@ -95,7 +95,8 @@
     <string name="fontsize100_summary">Size reduction of font when Battery-Level is on 100 percent</string>
     <string name="fontsize">Fontsize</string>
     <string name="fontsize_summary">Adjust fontsize of Battery-Level-Number</string>
-	<string name="Charging">Charging...</string>
+
+    <string name="Charging">Charging...</string>
 	<string name="ChargingUSB">Charging on USB</string>
 	<string name="ChargingAC">Charging on AC</string>
 	<string name="charge_enable">Show Charge Status</string>
@@ -104,7 +105,9 @@
 	<string name="charge_colors_enable">Use different color on charge</string>
 	<string name="charge_colors_enable_summary">Use different color on charge</string>
 	<string name="charge_color">Color on charge</string>
-
+	<string name="chargestatus_radius">Radius of Chargestatus Text</string>
+	<string name="chargestatus_radius_summary">The Radius, where the Charge-Status-Text should circle</string>
+	
 	<string name="resizePortrait">Resizing - Portrait-Mode</string>
 	<string name="resizePortrait_summary">Resizing when in portrait-mode....</string>
 	<string name="resizeLandscape">Resizing - Landscape-Mode</string>
@@ -122,8 +125,8 @@
 	<string name="scale_color_summary">Color of Scale Numbers</string>
 	<string name="status_color">Battery Status Text Color</string>
 	<string name="status_color_summary">Color of Battery Status Text</string>
-	<string name="chargestatus_radius">Radius of Chargestatus Text</string>
-	<string name="chargestatus_radius_summary">The Radius, where the Charge-Status-Text should circle</string>
+	<string name="battstatus_radius">Radius of Battery Status Text</string>
+	<string name="battstatus_radius_summary">The Radius, where the Battery-Status-Text should be displayed</string>
 	
 	<string name="keepAspectRatio">Keep the aspect ratio of the Background Image</string>
 	<string name="keepAspectRatio_summary">If disabled the image is scaled to exact dimensions of the screen (no background sliding in that case)</string>

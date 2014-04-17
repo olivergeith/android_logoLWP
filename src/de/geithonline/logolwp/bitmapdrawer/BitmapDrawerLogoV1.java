@@ -113,7 +113,7 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 
 	@Override
 	public void drawBattStatusText() {
-		drawBattStatusTextBottom(bitmapCanvas, fontSizeArc, true);
+		drawBattStatusTextBottomRound(bitmapCanvas, fontSizeArc, true);
 	}
 
 }
