@@ -86,15 +86,15 @@ public class Settings {
 
 	public static String getBattStatusCompleteShort() {
 		switch (getStatusStyle()) {
-		case BATT_STATUS_STYLE_VOLT:
-			return "Battery: " + (float) (battVoltage / 10) / 100 + "V";
-		case BATT_STATUS_STYLE_TEMP:
-			return "Battery: " + (float) battTemperature / 10 + "°C";
-		case BATT_STATUS_STYLE_TEMP_VOLT:
-			return "Battery: " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
-		default:
-		case BATT_STATUS_STYLE_TEMP_VOLT_HEALTH:
-			return "Battery: health " + getHealthText(battHealth) + ", " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
+			case BATT_STATUS_STYLE_VOLT:
+				return "Battery: " + (float) (battVoltage / 10) / 100 + "V";
+			case BATT_STATUS_STYLE_TEMP:
+				return "Battery: " + (float) battTemperature / 10 + "°C";
+			case BATT_STATUS_STYLE_TEMP_VOLT:
+				return "Battery: " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
+			default:
+			case BATT_STATUS_STYLE_TEMP_VOLT_HEALTH:
+				return "Battery: health " + getHealthText(battHealth) + ", " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
 		}
 	}
 
@@ -112,21 +112,21 @@ public class Settings {
 
 	private static String getHealthText(final int health) {
 		switch (health) {
-		case BatteryManager.BATTERY_HEALTH_GOOD:
-			return "good";
-		case BatteryManager.BATTERY_HEALTH_OVERHEAT:
-			return "overheat";
-		case BatteryManager.BATTERY_HEALTH_DEAD:
-			return "dead";
-		case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE:
-			return "overvoltage";
-		case BatteryManager.BATTERY_HEALTH_COLD:
-			return "cold";
-		case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE:
-			return "failure";
+			case BatteryManager.BATTERY_HEALTH_GOOD:
+				return "good";
+			case BatteryManager.BATTERY_HEALTH_OVERHEAT:
+				return "overheat";
+			case BatteryManager.BATTERY_HEALTH_DEAD:
+				return "dead";
+			case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE:
+				return "overvoltage";
+			case BatteryManager.BATTERY_HEALTH_COLD:
+				return "cold";
+			case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE:
+				return "failure";
 
-		default:
-			return "unknown";
+			default:
+				return "unknown";
 		}
 	}
 
@@ -334,6 +334,14 @@ public class Settings {
 		return col;
 	}
 
+	public static float getZeigerLength() {
+		if (prefs == null) {
+			return 1.0f;
+		}
+		final float size = prefs.getFloat("zeiger_length", 1.0f);
+		return size;
+	}
+
 	public static int getBattColorMid() {
 		if (prefs == null) {
 			return R.integer.COLOR_ORANGE;
@@ -513,31 +521,6 @@ public class Settings {
 		return paint;
 	}
 
-	/**
-	 * Initializes some preferences on first run with defaults
-	 * 
-	 * @param preferences
-	 */
-	public static void initPrefs(final SharedPreferences preferences, final Context context) {
-		prefs = preferences;
-		if (prefs.getBoolean("firstrun", true)) {
-			Log.i("GEITH", "FirstRun --> initializing the SharedPreferences with some colors...");
-			prefs.edit().putBoolean("firstrun", false).commit();
-			// init colors
-			prefs.edit().putInt("scale_color", Color.WHITE).commit();
-			prefs.edit().putInt("status_color", Color.WHITE).commit();
-			prefs.edit().putInt("charge_color", Color.GREEN).commit();
-			prefs.edit().putInt("battery_color", Color.WHITE).commit();
-			prefs.edit().putInt("background_color", Color.DKGRAY).commit();
-			prefs.edit().putInt("battery_color_mid", Color.YELLOW).commit();
-			prefs.edit().putInt("battery_color_low", Color.RED).commit();
-			prefs.edit().putInt("color_zeiger", Color.WHITE).commit();
-			prefs.edit().putBoolean("show_status", false).commit();
-		}
-		iconSize = Math.round(getDisplayWidth(context) * 0.15f);
-		defaultlogo = BitmapFactory.decodeResource(context.getResources(), R.drawable.sun1);
-	}
-
 	public static int getIconSize() {
 		return iconSize;
 	}
@@ -557,24 +540,22 @@ public class Settings {
 		if (prefs == null) {
 			return 1.0f;
 		}
-		final int size = Integer.valueOf(prefs.getString("resizePortrait", "100"));
-		return size / 100f;
+		return prefs.getFloat("resizePortrait", 1.0f);
 	}
 
 	public static float getLandscapeResizeFactor() {
 		if (prefs == null) {
 			return 1.0f;
 		}
-		final int size = Integer.valueOf(prefs.getString("resizeLandscape", "100"));
-		return size / 100f;
+		return prefs.getFloat("resizeLandscape", 1.0f);
 	}
 
 	public static float getChargeStatusRadiusFactor() {
 		if (prefs == null) {
 			return 1.0f;
 		}
-		final int size = Integer.valueOf(prefs.getString("chargestatus_radius", "80"));
-		return size / 100f;
+		final float size = prefs.getFloat("chargestatus_radius", 0.8f);
+		return size;
 	}
 
 	// ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -632,6 +613,33 @@ public class Settings {
 			return false;
 		}
 		return prefs.getBoolean("recolor", false);
+	}
+
+	/**
+	 * Initializes some preferences on first run with defaults
+	 * 
+	 * @param preferences
+	 */
+	public static void initPrefs(final SharedPreferences preferences, final Context context) {
+		prefs = preferences;
+		if (prefs.getBoolean("firstrun", true)) {
+			Log.i("GEITH", "FirstRun --> initializing the SharedPreferences with some colors...");
+			prefs.edit().putBoolean("firstrun", false).commit();
+			// init colors
+			prefs.edit().putInt("scale_color", Color.WHITE).commit();
+			prefs.edit().putInt("status_color", Color.WHITE).commit();
+			prefs.edit().putInt("charge_color", Color.GREEN).commit();
+			prefs.edit().putInt("battery_color", Color.WHITE).commit();
+			prefs.edit().putInt("background_color", Color.DKGRAY).commit();
+			prefs.edit().putInt("battery_color_mid", Color.YELLOW).commit();
+			prefs.edit().putInt("battery_color_low", Color.RED).commit();
+			prefs.edit().putInt("color_zeiger", Color.WHITE).commit();
+			prefs.edit().putBoolean("show_status", false).commit();
+			prefs.edit().putInt("number_color", Color.WHITE).commit();
+			prefs.edit().putInt("status_color", Color.WHITE).commit();
+		}
+		iconSize = Math.round(getDisplayWidth(context) * 0.15f);
+		defaultlogo = BitmapFactory.decodeResource(context.getResources(), R.drawable.sun1);
 	}
 
 }

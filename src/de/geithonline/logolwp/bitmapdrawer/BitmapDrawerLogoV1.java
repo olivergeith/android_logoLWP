@@ -91,12 +91,13 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 		if (Settings.isShowZeiger()) {
 			final Paint zp = getZeigerPaint(level);
 			zp.setShadowLayer(10, 0, 0, Color.BLACK);
+			final int radius = Math.round(bWidth / 2 * Settings.getZeigerLength());
 			if (Settings.isFlip()) {
-				bitmapCanvas.drawArc(getRectForOffset(0), 270 + Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
+				bitmapCanvas.drawArc(getRectForRadius(radius), 270 + Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
 			} else {
-				bitmapCanvas.drawArc(getRectForOffset(0), 270 - Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
+				bitmapCanvas.drawArc(getRectForRadius(radius), 270 - Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
 			}
-			bitmapCanvas.drawArc(getRectForOffset(0), 270 - 0.75f, 1.5f, true, zp);
+			bitmapCanvas.drawArc(getRectForRadius(radius), 270 - 0.75f, 1.5f, true, zp);
 		}
 	}
 

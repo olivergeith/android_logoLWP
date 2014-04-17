@@ -7,28 +7,28 @@ This is a Live Wallpaper, that displays the current batterylevel.
 
 So, what is cool about it?
 ------------------------------------------
-...well you can use any image you want as Battery-Image!
+...well, you can use any image you want as Battery-Image!
 Normally you would choose a logo-image of your favorite game, tv-series, or whatever...look at the screenshots to get an idea. 
 
 Look at my other free APP "The BatteryLWP"...there you can check this out for free. 
 
 So, why is this a paid APP ?
 ------------------------------------------
-...well, this App has a lot of more features to play with and to optimize the Battery-Image.
+...well, this App has a lot of more features to optimize the Battery-Image
+...a lot of more features to play with
 ...and it will gain lots of more features in the future!
 
 Why is there only one logo-image included in this app?
 ------------------------------------------
-... well that is because of copyright on lots of images...I'm simply not allowed to provide them!
+... well, that is because of copyright on lots of images...I'm simply not allowed to provide them!
 But that should be no problem for you...be creative...design your own logo-images.  
 Save them to your sdcard and load them into this APP.
 If you need examples of some nice logos...go the the Google+ Community of this APP and download some over there...
-...or gether some inspiration for your own designs!
 Or simply use the google picture search and google & download some cool images! 
 
 How to ?
 ------------------------------------------
-...well that is simple....this App uses any image(I call it logo!) as Battery-Icon. 
+...well, that is simple....this App uses any image(I call it logo!) as Battery-Icon. 
 Any Image?
 ...well, best results will be with square images with about 512x512 pixels and a circular design, with transparent parts (look for png's)!
 ... on HD devices you may want to use images with 1080x1080 pixel (personally I don't see a big difference on my Nexus 5...but that is up to you)
@@ -38,15 +38,17 @@ Where to put them?
 Plug your phone to the charger and see the charge animation! 
 ...This will give you a better idea, how the battery will look like on the different battery levels!  
 
-Is this HD?
+Is it HD?
 ------------------------------------------
 ...well, the battery "icon" is rendered according to your devices display resolution...so if your device is fullHD...this wallpaper is fullHD too!
+...of course this depends on your logo-image...if it has only 16x16 pixel, well...then it won't be HD!!!
 
 
 ++++++++++++++++++++++++++
 Features:
 ++++++++++++++++++++++++++
 - animated battery on charge 
+- use any image es Battery icon (choose from gallery)
 - custom backgrounds (choose from gallery)
 - background-image is sliding, wenn swiping through homescreen pages (Apex, Nova, and so on....)
 - lots of settings to customize the battery

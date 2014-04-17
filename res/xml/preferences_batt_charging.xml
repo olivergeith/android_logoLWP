@@ -53,16 +53,12 @@
 	        android:defaultValue="@integer/COLOR_WHITE"
 	        android:dependency="charge_enable"
 	        />
-       <ListPreference
-            android:key="chargestatus_radius"
-            android:defaultValue="80"
-            android:title="@string/chargestatus_radius" 
-            android:summary="@string/chargestatus_radius_summary" 
-            android:dialogTitle="@string/chargestatus_radius"
-            android:entries="@array/resize"
-            android:entryValues="@array/resizeValues"
-	        android:dependency="charge_enable"
-            />
+       <net.jayschwa.android.preference.SliderPreference
+    		android:key="chargestatus_radius"
+		    android:title="@string/chargestatus_radius"
+		    android:defaultValue="0.8"
+		    android:dialogMessage="@string/chargestatus_radius" />
+       
   	    
  	</PreferenceCategory>>
 

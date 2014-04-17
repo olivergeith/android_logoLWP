@@ -23,6 +23,19 @@
         android:title="@string/category_size"
         android:summary="@string/category_size_summary">
         
+
+        <net.jayschwa.android.preference.SliderPreference
+    		android:key="resizePortrait"
+		    android:title="@string/resizePortrait"
+		    android:defaultValue="1.0"
+		    android:dialogMessage="@string/resizePortrait" />
+       <net.jayschwa.android.preference.SliderPreference
+    		android:key="resizeLandscape"
+		    android:title="@string/resizeLandscape"
+		    android:defaultValue="1.0"
+		    android:dialogMessage="@string/resizeLandscape" />
+        
+    <!--     
         <ListPreference
             android:key="resizePortrait"
             android:defaultValue="100"
@@ -41,7 +54,7 @@
             android:entries="@array/resize"
             android:entryValues="@array/resizeValues"
             />
-        
+         -->
         <CheckBoxPreference 
             android:key="centerBattery"
             android:title="@string/centerBattery"
@@ -88,6 +101,13 @@
             android:summary="@string/color_zeiger_summary"
             android:defaultValue="@integer/COLOR_WHITE"
             />
+        
+        <net.jayschwa.android.preference.SliderPreference
+    		android:key="zeiger_length"
+		    android:title="@string/zeiger_length"
+		    android:defaultValue="1.0"
+		    android:dialogMessage="@string/zeiger_length" />
+        
         <CheckBoxPreference 
             android:key="show_rand"
             android:title="@string/show_rand"
