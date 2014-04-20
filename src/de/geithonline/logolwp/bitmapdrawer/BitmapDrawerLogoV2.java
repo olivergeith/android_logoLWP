@@ -4,6 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.RectF;
 import de.geithonline.logolwp.settings.Settings;
 import de.geithonline.logolwp.utils.BitmapHelper;
 
@@ -86,9 +89,9 @@ public class BitmapDrawerLogoV2 extends BitmapDrawer {
 		// overpaint it with colored version
 		final Paint battPaint = getBitmapPaint(level, bgBitmap);
 		if (Settings.isFlip()) {
-			bitmapCanvas.drawArc(getRectForOffset(-bWidth / 2), 270, Math.round(level * 3.6f), true, battPaint);
+			bitmapCanvas.drawRect(new RectF(0, 0, bWidth * level / 100, bHeight), battPaint);
 		} else {
-			bitmapCanvas.drawArc(getRectForOffset(-bWidth / 2), 270, -Math.round(level * 3.6f), true, battPaint);
+			bitmapCanvas.drawRect(new RectF(0, bHeight - bHeight * level / 100, bWidth, bHeight), battPaint);
 		}
 	}
 
@@ -97,13 +100,16 @@ public class BitmapDrawerLogoV2 extends BitmapDrawer {
 		if (Settings.isShowZeiger()) {
 			final Paint zp = getZeigerPaint(level);
 			zp.setShadowLayer(10, 0, 0, Color.BLACK);
-			final int radius = Math.round(bWidth / 2 * Settings.getZeigerLength());
+			final PorterDuffXfermode xfermode = new PorterDuffXfermode(Mode.SRC_IN);
+			zp.setXfermode(xfermode);
+			final float zeigerdicke = 0.005f;
 			if (Settings.isFlip()) {
-				bitmapCanvas.drawArc(getRectForRadius(radius), 270 + Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
+				final float levelX = bWidth * level / 100;
+				bitmapCanvas.drawRect(new RectF(levelX - bWidth * zeigerdicke, 0, levelX + bWidth * zeigerdicke, bHeight), zp);
 			} else {
-				bitmapCanvas.drawArc(getRectForRadius(radius), 270 - Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
+				final float levelY = bHeight - bHeight * level / 100;
+				bitmapCanvas.drawRect(new RectF(0, levelY - bHeight * zeigerdicke, bWidth, levelY + bHeight * zeigerdicke), zp);
 			}
-			bitmapCanvas.drawArc(getRectForRadius(radius), 270 - 0.75f, 1.5f, true, zp);
 		}
 	}
 

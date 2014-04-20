@@ -35,7 +35,7 @@ public class BillingManager {
 	 * an attacker to replace the public key with one of their own and then fake
 	 * messages from the server.
 	 */
-	private final String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnPZVeL8OkQIVc6mi0hdXPySB7yDkdovB8rKHAeGg3/IlE9i56N2WFFIovtXh3y5VSC76jpOXSCzHjdY7MJOy1eVu0Q41U1ppTF6Hd1EYel4KJlvlbjn1KlGQgZr9sVM65/nzgMcKFgn9X570NJJMHiIpwEPBDVJ5bMJQxmYsn1KE3WNu+57Rb01TcEEa1plhMkqmDeui4zTrZUKRXfyk0AveDEN4ZzQoRdcz4fhueEZH0XyBkiDpYPcQuO6m/d8oQm1a1Q4e13Im0oPoQ9xFgueZ7RW/mTKGeEaLbUS0MMIS+WG/lR1fJ+R6ZvwfNt8HlK2zXibLo2xY+zs7ZC+5rQIDAQAB";
+	private final String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlVrws6HwXo+NY6EFTC5tBllT7vaYTLYQuXyqPaROfSKWpcKbBFB3wui1J8tVXZk6TyUqbGrbY7Zu69qkz1sX3K22fX6orefCzWuuB5PD7Y47bSsFHRkeL7dGxbl7XmmjwnxZ2lrt5pmW4GfXl7WaOQ3Xlr3JfWg7msqjwOrSfs+y2H/QfddEI8WvF8tGkKk7iuwbtFsOCmmEFEq74GhS7tO1GyeGZ+52Y2Ef4kmYwzr/dL7csHNsGWbh5lX+Vvxm7d8MgSS/2wXPtIw4nW1BXppws7o6yZCtfOiQyuIw+T3Pxb5rJaWiSIAEn+aTr8exbvmpPAe4kNhwYeq2MTHUKwIDAQAB";
 	// The helper object
 	private IabHelper mHelper;
 	private final String TAG = "Billing";

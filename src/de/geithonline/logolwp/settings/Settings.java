@@ -20,6 +20,7 @@ import de.geithonline.logolwp.utils.BitmapHelper;
 
 public class Settings {
 	public static SharedPreferences prefs = LiveWallpaperService.prefs;
+	private static Context context;
 	private static String style = "aaa";
 	private static IBitmapDrawer bitmapDrawer;
 	public static final int ANIMATION_STYLE_0_TO_100 = 1;
@@ -33,9 +34,8 @@ public class Settings {
 	public static int battVoltage = -1;
 	public static int iconSize;
 	private static Bitmap defaultlogo;
-	private static Bitmap maskStar;
-	private static Bitmap maskCircle;
-	private static Bitmap maskRoundedRect;
+	private static Bitmap mask;
+	private static String maske = "000";
 
 	public static final int BATT_STATUS_STYLE_TEMP_VOLT_HEALTH = 0;
 	public static final int BATT_STATUS_STYLE_TEMP_VOLT = 1;
@@ -621,19 +621,46 @@ public class Settings {
 
 	public static Bitmap getLogoMask(final int bWidth, final int bHeight) {
 		if (prefs == null) {
-			return Bitmap.createScaledBitmap(maskStar, bWidth, bHeight, true);
+			mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar), bWidth, bHeight, true);
+		} else {
+			if (!maske.equals(prefs.getString("maskList", "1"))) {
+				maske = prefs.getString("maskList", "1");
+				switch (maske) {
+				default:
+				case "1":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar), bWidth, bHeight, true);
+					break;
+				case "2":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskroundedrect), bWidth, bHeight, true);
+					break;
+				case "3":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskcircle), bWidth, bHeight, true);
+					break;
+				case "4":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskflower), bWidth, bHeight, true);
+					break;
+				case "5":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear1), bWidth, bHeight, true);
+					break;
+				case "6":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear2), bWidth, bHeight, true);
+					break;
+				case "7":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear3), bWidth, bHeight, true);
+					break;
+				case "8":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksplash), bWidth, bHeight, true);
+					break;
+				case "9":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun1), bWidth, bHeight, true);
+					break;
+				case "10":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun2), bWidth, bHeight, true);
+					break;
+				}
+			}
 		}
-		final String mask = prefs.getString("maskList", "1");
-		switch (mask) {
-		default:
-		case "1":
-			return Bitmap.createScaledBitmap(maskStar, bWidth, bHeight, true);
-		case "2":
-			return Bitmap.createScaledBitmap(maskRoundedRect, bWidth, bHeight, true);
-		case "3":
-			return Bitmap.createScaledBitmap(maskCircle, bWidth, bHeight, true);
-
-		}
+		return mask;
 	}
 
 	public static boolean isFlip() {
@@ -656,6 +683,7 @@ public class Settings {
 	 * @param preferences
 	 */
 	public static void initPrefs(final SharedPreferences preferences, final Context context) {
+		Settings.context = context;
 		prefs = preferences;
 		if (prefs.getBoolean("firstrun", true)) {
 			Log.i("GEITH", "FirstRun --> initializing the SharedPreferences with some colors...");
@@ -676,9 +704,7 @@ public class Settings {
 		}
 		iconSize = Math.round(getDisplayWidth(context) * 0.15f);
 		defaultlogo = BitmapFactory.decodeResource(context.getResources(), R.drawable.sun1);
-		maskStar = BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar);
-		maskRoundedRect = BitmapFactory.decodeResource(context.getResources(), R.drawable.maskroundedrect);
-		maskCircle = BitmapFactory.decodeResource(context.getResources(), R.drawable.maskcircle);
+		mask = BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar);
 	}
 
 }
