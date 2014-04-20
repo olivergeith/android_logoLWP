@@ -27,6 +27,7 @@ import de.geithonline.logolwp.utils.Toaster;
 
 public class PreferencesActivity extends PreferenceActivity {
 
+	private BillingManager billingManager;
 	private static final int REQUEST = 999;
 	private Button buttonSetWP;
 	public static SharedPreferences prefs;
@@ -52,6 +53,9 @@ public class PreferencesActivity extends PreferenceActivity {
 		prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 		Settings.initPrefs(prefs, getApplicationContext());
 
+		billingManager = new BillingManager(this);
+		final boolean isPremium = billingManager.isPremium();
+
 		// A button to set us as Wallpaper
 		buttonSetWP = new Button(this);
 		buttonSetWP.setText("Set Wallpaper");
@@ -71,6 +75,13 @@ public class PreferencesActivity extends PreferenceActivity {
 			ll.addView(buttonSetWP);
 		} else {
 		}
+
+		// Add a button to the header list.
+		if (!isPremium) {
+			final Button button = billingManager.getButton();
+			ll.addView(button);
+		}
+
 		// set view with buttons to the list footer
 		setListFooter(ll);
 	}
@@ -87,6 +98,7 @@ public class PreferencesActivity extends PreferenceActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		billingManager.onDestroy();
 	}
 
 	@SuppressLint("InlinedApi")

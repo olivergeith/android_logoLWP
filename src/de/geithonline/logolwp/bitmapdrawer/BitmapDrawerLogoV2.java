@@ -53,7 +53,7 @@ public class BitmapDrawerLogoV2 extends BitmapDrawer {
 			// quer
 			setBitmapSize(cHeight, cHeight, false);
 		}
-		final Bitmap bitmap = Bitmap.createBitmap(bWidth, bHeight, Bitmap.Config.ARGB_8888);
+		Bitmap bitmap = Bitmap.createBitmap(bWidth, bHeight, Bitmap.Config.ARGB_8888);
 		bitmapCanvas = new Canvas(bitmap);
 
 		fontSize = Math.round(bWidth * 0.35f);
@@ -61,13 +61,14 @@ public class BitmapDrawerLogoV2 extends BitmapDrawer {
 		drawSegmente(level);
 
 		// Zuschnitt auf Maske
-		final Bitmap maskBitmap = Settings.getLogoMask(bWidth, bHeight);
-		final Bitmap bitmap2 = BitmapHelper.getMaskedBitmap(bitmap, maskBitmap);
-
+		if (Settings.isMaskLogo()) {
+			final Bitmap maskBitmap = Settings.getLogoMask(bWidth, bHeight);
+			bitmap = BitmapHelper.getMaskedBitmap(bitmap, maskBitmap);
+		}
 		// zeiger
 		drawZeiger(level);
 
-		return bitmap2;
+		return bitmap;
 	}
 
 	private void drawSegmente(final int level) {

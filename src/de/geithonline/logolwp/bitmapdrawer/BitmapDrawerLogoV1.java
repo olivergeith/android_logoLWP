@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import de.geithonline.logolwp.settings.Settings;
+import de.geithonline.logolwp.utils.BitmapHelper;
 
 public class BitmapDrawerLogoV1 extends BitmapDrawer {
 
@@ -52,13 +53,20 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 			// quer
 			setBitmapSize(cHeight, cHeight, false);
 		}
-		final Bitmap bitmap = Bitmap.createBitmap(bWidth, bHeight, Bitmap.Config.ARGB_8888);
+		Bitmap bitmap = Bitmap.createBitmap(bWidth, bHeight, Bitmap.Config.ARGB_8888);
 		bitmapCanvas = new Canvas(bitmap);
 
 		fontSize = Math.round(bWidth * 0.35f);
 		fontSizeArc = Math.round(bWidth * 0.05f);
-
 		drawSegmente(level);
+
+		// Zuschnitt auf Maske
+		if (Settings.isMaskLogo()) {
+			final Bitmap maskBitmap = Settings.getLogoMask(bWidth, bHeight);
+			bitmap = BitmapHelper.getMaskedBitmap(bitmap, maskBitmap);
+		}
+		// zeiger
+		drawZeiger(level);
 
 		return bitmap;
 	}
@@ -72,6 +80,7 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 			myHeight = bHeight;
 			bgBitmap = Settings.getCustomLogoSampled(bWidth, bHeight);
 		}
+
 		// paint grayscaled version of it
 		bitmapCanvas.drawBitmap(bgBitmap, 0, 0, getGrayscalePaint());
 		// overpaint it with colored version
@@ -81,9 +90,6 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 		} else {
 			bitmapCanvas.drawArc(getRectForOffset(-bWidth / 2), 270, -Math.round(level * 3.6f), true, battPaint);
 		}
-		// zeiger
-		drawZeiger(level);
-
 	}
 
 	private void drawZeiger(final int level) {

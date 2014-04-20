@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
-    xmlns:stylelistpreference="http://schemas.android.com/apk/res/de.geithonline.logolwp">
+    xmlns:stylelistpreference="http://schemas.android.com/apk/res/de.geithonline.logolwp"
+    xmlns:imagelistpreference="http://schemas.android.com/apk/lib/de.geithonline.android.basics.preferences.imagelistpreference">
  
     <PreferenceCategory 
         android:title="@string/category_style"
@@ -8,7 +9,7 @@
 
         <de.geithonline.logolwp.stylelistpreference.StyleListPreference
 	        android:key="batt_style"
-	        android:defaultValue="ZoopaWideV3"
+	        android:defaultValue="LogoV1"
 	        android:title="@string/style" 
 	        android:summary="@string/style_summary" 
 	        android:dialogTitle="Battery Style"
@@ -120,7 +121,10 @@
             android:summary="@string/flip_summary"
             android:defaultValue="false"
             />
-  
+
+        
+        
+        
         <CheckBoxPreference 
             android:key="customLogo"
             android:title="@string/customLogo"
@@ -132,6 +136,23 @@
 	        android:title="@string/logoPicker"
 	        android:dependency="customLogo"
 	        />
+        
+        <CheckBoxPreference 
+            android:key="maskLogo"
+            android:title="@string/maskLogo"
+            android:defaultValue="false"
+	        android:dependency="customLogo"
+            />
+        <ListPreference
+			android:key="maskList"
+            android:title="@string/maskList"
+			android:summary="@string/maskList_summary"
+			android:entries="@array/maskNames"
+			android:entryValues="@array/maskValues"
+	        android:dependency="maskLogo"
+		/>
+        
+        
  	    <Preference 
 		    android:key="howtoLogoLink"
 	        android:title="Howto use Logo"
