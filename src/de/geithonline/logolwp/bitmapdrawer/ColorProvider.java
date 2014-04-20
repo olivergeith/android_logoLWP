@@ -265,4 +265,5 @@ public class ColorProvider {
 		}
 		return paint;
 	}
+
 }

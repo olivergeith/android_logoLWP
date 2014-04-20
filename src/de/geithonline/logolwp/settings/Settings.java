@@ -33,6 +33,7 @@ public class Settings {
 	public static int battVoltage = -1;
 	public static int iconSize;
 	private static Bitmap defaultlogo;
+	private static Bitmap maskStar;
 
 	public static final int BATT_STATUS_STYLE_TEMP_VOLT_HEALTH = 0;
 	public static final int BATT_STATUS_STYLE_TEMP_VOLT = 1;
@@ -609,6 +610,10 @@ public class Settings {
 		return defaultBmp;
 	}
 
+	public static Bitmap getLogoMask(final int bWidth, final int bHeight) {
+		return Bitmap.createScaledBitmap(maskStar, bWidth, bHeight, true);
+	}
+
 	public static boolean isFlip() {
 		if (prefs == null) {
 			return false;
@@ -645,9 +650,11 @@ public class Settings {
 			prefs.edit().putBoolean("show_status", false).commit();
 			prefs.edit().putInt("number_color", Color.WHITE).commit();
 			prefs.edit().putInt("status_color", Color.WHITE).commit();
+			prefs.edit().putInt("chargestatus_color", Color.WHITE).commit();
 		}
 		iconSize = Math.round(getDisplayWidth(context) * 0.15f);
 		defaultlogo = BitmapFactory.decodeResource(context.getResources(), R.drawable.sun1);
+		maskStar = BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar);
 	}
 
 }

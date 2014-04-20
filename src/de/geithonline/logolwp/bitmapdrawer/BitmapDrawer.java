@@ -18,7 +18,7 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 	protected int bHeight = 0;
 	protected int bWidth = 0;
 	protected int level = -99;
-	private Bitmap bitmap;
+	private Bitmap bmp;
 	private boolean isDrawIcon = false;
 
 	public abstract Bitmap drawBitmap(final int level);
@@ -29,11 +29,11 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 
 	public abstract void drawBattStatusText();
 
-	public void drawOnCanvas(final Bitmap bitmap, final Canvas canvas) {
+	public void drawOnCanvas(final Bitmap b, final Canvas canvas) {
 		if (Settings.isCenteredBattery()) {
-			canvas.drawBitmap(bitmap, cWidth / 2 - bWidth / 2, cHeight / 2 - bHeight / 2, null);
+			canvas.drawBitmap(b, cWidth / 2 - bWidth / 2, cHeight / 2 - bHeight / 2, null);
 		} else {
-			canvas.drawBitmap(bitmap, cWidth / 2 - bWidth / 2, cHeight - bHeight - Settings.getVerticalPositionOffset(isPortrait()), null);
+			canvas.drawBitmap(b, cWidth / 2 - bWidth / 2, cHeight - bHeight - Settings.getVerticalPositionOffset(isPortrait()), null);
 		}
 	}
 
@@ -61,15 +61,15 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 		final int h = canvas.getHeight();
 		final int w = canvas.getWidth();
 		// Bitmap neu berechnen wenn Level sich Ändert oder Canvas dimensions
-		if (this.level != level || w != cWidth || h != cHeight || bitmap == null || forcedraw) {
+		if (this.level != level || w != cWidth || h != cHeight || bmp == null || forcedraw) {
 			cWidth = w;
 			cHeight = h;
 			// Memory frei geben für altes bitmap
-			if (bitmap != null) {
-				bitmap.recycle();
+			if (bmp != null) {
+				bmp.recycle();
 			}
 			// Bitnmap neu berechnen
-			bitmap = drawBitmap(level);
+			bmp = drawBitmap(level);
 			if (Settings.isShowNumber()) {
 				drawLevelNumber(level);
 			}
@@ -83,9 +83,9 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 		// den aktuellen level merken
 		this.level = level;
 		if (Settings.isDebugging()) {
-			BitmapHelper.saveBitmap(bitmap, getClass().getSimpleName(), level);
+			BitmapHelper.saveBitmap(bmp, getClass().getSimpleName(), level);
 		}
-		drawOnCanvas(bitmap, canvas);
+		drawOnCanvas(bmp, canvas);
 	}
 
 	@Override

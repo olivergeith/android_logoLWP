@@ -6,9 +6,15 @@ import java.io.OutputStream;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
@@ -64,6 +70,35 @@ public class BitmapHelper {
 
 	public static Drawable resizeToIcon128(final Bitmap bitmap) {
 		return resizeToIcon(bitmap, 128, 128);
+	}
+
+	public static Bitmap convertToAlphaMask(final Bitmap b) {
+		final Bitmap a = Bitmap.createBitmap(b.getWidth(), b.getHeight(), Bitmap.Config.ALPHA_8);
+		final Canvas c = new Canvas(a);
+		c.drawBitmap(b, 0.0f, 0.0f, null);
+		return a;
+	}
+
+	public static Bitmap getMaskedBitmap(final Bitmap source, final Bitmap mask) {
+		final BitmapFactory.Options options = new BitmapFactory.Options();
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			options.inMutable = true;
+		}
+		options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+		Bitmap bitmap;
+		if (source.isMutable()) {
+			bitmap = source;
+		} else {
+			bitmap = source.copy(Bitmap.Config.ARGB_8888, true);
+			source.recycle();
+		}
+		bitmap.setHasAlpha(true);
+		final Canvas canvas = new Canvas(bitmap);
+		final Paint paint = new Paint();
+		paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+		canvas.drawBitmap(mask, 0, 0, paint);
+		// mask.recycle();
+		return bitmap;
 	}
 
 	public static void logBackgroundFileInfo(final String path) {

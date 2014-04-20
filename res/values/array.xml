@@ -134,7 +134,7 @@
 
     <string-array name="styl_booleans">
         <item name="110">true</item>
-        <item name="111">false</item>
+        <item name="111">true</item>
         </string-array>
     
     <string-array name="prostyl">
