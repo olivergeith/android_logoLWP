@@ -173,7 +173,10 @@
 		<item>"Sun 3"</item>
 		<item>"Ring 1"</item>
 		<item>"Ring 2"</item>
-												
+		<item>"Wheel"</item>
+		<item>"Heart"</item>
+		<item>"Heart filled"</item>
+																
 	</string-array>
 	
 	<string-array name="maskValues">
@@ -191,7 +194,10 @@
 		<item>"11"</item>
 		<item>"12"</item>
 		<item>"13"</item>
-										
+		<item>"14"</item>
+		<item>"15"</item>
+		<item>"16"</item>
+														
 	</string-array>
 		
     

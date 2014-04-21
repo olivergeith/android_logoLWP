@@ -676,6 +676,15 @@ public class Settings {
 				case "13":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring2), bWidth, bHeight, true);
 					break;
+				case "14":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskwheel), bWidth, bHeight, true);
+					break;
+				case "15":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskheart), bWidth, bHeight, true);
+					break;
+				case "16":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskheart2), bWidth, bHeight, true);
+					break;
 				}
 			}
 		}
