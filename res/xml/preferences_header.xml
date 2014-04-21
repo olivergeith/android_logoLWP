@@ -7,6 +7,11 @@
             android:icon="@drawable/icon"
             android:title="@string/header_title_battery"
             android:summary="@string/header_summary_battery" />
+
+    <header android:fragment="de.geithonline.logolwp.SizePreferencesFragment"
+            android:icon="@drawable/size"
+            android:title="@string/header_size"
+            android:summary="@string/header_size_summary" />
     
     <header android:fragment="de.geithonline.logolwp.BattColorPreferencesFragment"
             android:icon="@drawable/color"

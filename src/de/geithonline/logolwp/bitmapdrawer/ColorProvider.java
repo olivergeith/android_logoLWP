@@ -210,7 +210,7 @@ public class ColorProvider {
 		return paint;
 	}
 
-	public Paint getTextBattStatusPaint(final int fontSize, final Align align, final boolean bold) {
+	public Paint getTextBattStatusPaint(final int fontSize, final Align align, final boolean bold, final boolean dropShadow) {
 		final Paint paint = new Paint();
 		paint.setAntiAlias(true);
 		paint.setColor(Settings.getBattStatusColor());
@@ -223,6 +223,10 @@ public class ColorProvider {
 		} else {
 			paint.setTypeface(Typeface.DEFAULT);
 		}
+		if (dropShadow) {
+			paint.setShadowLayer(10, 0, 0, Color.BLACK);
+		}
+
 		paint.setTextAlign(align);
 		return paint;
 	}

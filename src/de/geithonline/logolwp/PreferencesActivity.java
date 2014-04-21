@@ -42,6 +42,7 @@ public class PreferencesActivity extends PreferenceActivity {
 				|| BattNumberPreferencesFragment.class.getName().equals(fragmentName) //
 				|| BattStatusPreferencesFragment.class.getName().equals(fragmentName) //
 				|| BattChargingPreferencesFragment.class.getName().equals(fragmentName) //
+				|| SizePreferencesFragment.class.getName().equals(fragmentName) //
 				|| BackgroundPreferencesFragment.class.getName().equals(fragmentName);
 	}
 

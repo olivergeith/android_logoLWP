@@ -19,72 +19,48 @@
 	        
 	        />
         
-        </PreferenceCategory>
-    <PreferenceCategory 
-        android:title="@string/category_size"
-        android:summary="@string/category_size_summary">
-        
+    </PreferenceCategory>
 
-        <de.geithonline.android.basics.preferences.SliderPreference
-    		android:key="resizePortrait"
-		    android:title="@string/resizePortrait"
-		    android:defaultValue="1.0"
-		    android:dialogMessage="@string/resizePortrait" />
-       <de.geithonline.android.basics.preferences.SliderPreference
-    		android:key="resizeLandscape"
-		    android:title="@string/resizeLandscape"
-		    android:defaultValue="1.0"
-		    android:dialogMessage="@string/resizeLandscape" />
+    <PreferenceCategory 
+        android:title="@string/category_logo_options"
+        android:summary="@string/category_logo_options_summary">
         
-    <!--     
-        <ListPreference
-            android:key="resizePortrait"
-            android:defaultValue="100"
-            android:title="@string/resizePortrait" 
-            android:summary="@string/resizePortrait_summary" 
-            android:dialogTitle="@string/resizePortrait"
-            android:entries="@array/resize"
-            android:entryValues="@array/resizeValues"
-            />
-        <ListPreference
-            android:key="resizeLandscape"
-            android:defaultValue="100"
-            android:title="@string/resizeLandscape" 
-            android:summary="@string/resizeLandscape_summary" 
-            android:dialogTitle="@string/resizeLandscape"
-            android:entries="@array/resize"
-            android:entryValues="@array/resizeValues"
-            />
-         -->
+        
         <CheckBoxPreference 
-            android:key="centerBattery"
-            android:title="@string/centerBattery"
-            android:summary="@string/centerBattery_summary"
-            android:defaultValue="true"
-            android:disableDependentsState="true"
-        	/>
+            android:key="customLogo"
+            android:title="@string/customLogo"
+            android:defaultValue="false"
+            />
+        <Preference
+	        android:key="logoPicker"
+	        android:summary="@string/logoPicker_summary"
+	        android:title="@string/logoPicker"
+	        android:dependency="customLogo"
+	        />
         
-        <EditTextPreference
-		    android:key="vertical_position"
-    		android:defaultValue="0"
-		    android:title="@string/vertical_position" 
-    		android:dialogTitle="@string/vertical_position"
-		    android:inputType="number"
-		    android:summary="@string/vertical_position_summary"
-		    android:dependency="centerBattery"
-         	/>
-        <EditTextPreference
-		    android:key="vertical_position_landscape"
-    		android:defaultValue="0"
-		    android:title="@string/vertical_position_landscape" 
-    		android:dialogTitle="@string/vertical_position_landscape"
-		    android:inputType="number"
-		    android:summary="@string/vertical_position_landscape_summary"
-		    android:dependency="centerBattery"
-         	/>
+        <ListPreference
+			android:key="maskList"
+            android:title="@string/maskList"
+			android:summary="@string/maskList_summary"
+			android:entries="@array/maskNames"
+			android:entryValues="@array/maskValues"
+	        android:dependency="customLogo"
+		/>
+        
+        
+ 	    <Preference 
+		    android:key="howtoLogoLink"
+	        android:title="Howto use Logo"
+	        android:icon="@drawable/about"
+	        >
+	        <intent android:action="android.intent.action.VIEW"
+	            android:data="http://goo.gl/ZDMpmj" />
+	    </Preference>
+        
         
     </PreferenceCategory>
-        
+    
+    
     <PreferenceCategory 
         android:title="@string/category_style_options"
         android:summary="@string/category_style_options_summary">
@@ -122,41 +98,7 @@
             android:defaultValue="false"
             />
 
-        
-        
-        
-        <CheckBoxPreference 
-            android:key="customLogo"
-            android:title="@string/customLogo"
-            android:defaultValue="false"
-            />
-        <Preference
-	        android:key="logoPicker"
-	        android:summary="@string/logoPicker_summary"
-	        android:title="@string/logoPicker"
-	        android:dependency="customLogo"
-	        />
-        
-        <ListPreference
-			android:key="maskList"
-            android:title="@string/maskList"
-			android:summary="@string/maskList_summary"
-			android:entries="@array/maskNames"
-			android:entryValues="@array/maskValues"
-	        android:dependency="customLogo"
-		/>
-        
-        
- 	    <Preference 
-		    android:key="howtoLogoLink"
-	        android:title="Howto use Logo"
-	        android:icon="@drawable/about"
-	        >
-	        <intent android:action="android.intent.action.VIEW"
-	            android:data="http://goo.gl/ZDMpmj" />
-	    </Preference>
-        
-        
     </PreferenceCategory>
+        
         
 </PreferenceScreen>

@@ -114,7 +114,7 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 
 	protected void drawBattStatusTextBottom(final Canvas canvas, final int fontSize, final boolean dropShadow) {
 		final String text = Settings.getBattStatusCompleteShort();
-		final Paint paint = getTextBattStatusPaint(fontSize, Align.CENTER, true);
+		final Paint paint = getTextBattStatusPaint(fontSize, Align.CENTER, true, true);
 		if (dropShadow) {
 			paint.setShadowLayer(10, 0, 0, Color.BLACK);
 		}
@@ -127,7 +127,7 @@ public abstract class BitmapDrawer extends ColorProvider implements IBitmapDrawe
 		final RectF oval = getRectForRadius(radius);
 		mArc.addArc(oval, 225, -270);
 		final String text = Settings.getBattStatusCompleteShort();
-		final Paint p = getTextBattStatusPaint(fontSize, Align.CENTER, true);
+		final Paint p = getTextBattStatusPaint(fontSize, Align.CENTER, true, true);
 		canvas.drawTextOnPath(text, mArc, 0, 0, p);
 	}
 

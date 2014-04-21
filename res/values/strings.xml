@@ -26,6 +26,8 @@
     <string name="category_style_summary">Battery Style Settings</string>
 	<string name="category_size">Battery Size and Position</string>
     <string name="category_size_summary">Resizing and positioning of battery</string>
+    <string name="category_logo_options">Logo Options</string>
+    <string name="category_logo_options_summary">Logo Options ...</string>
     <string name="category_style_options">Special Options for specific Style</string>
     <string name="category_style_options_summary">Not all options are appliable for all Batteries</string>
     <string name="category_custom_background">Custom Background</string>
@@ -57,6 +59,8 @@
 	<string name="color_zeiger">Pointer Color</string>
     <string name="color_zeiger_summary">Some Batteries have a Pointer - set its color here</string>
     		
+    <string name="header_size">Battery Size</string>
+	<string name="header_size_summary">Battery Size and Position ....</string>
     <string name="header_title_battery">Battery Style</string>
 	<string name="header_summary_battery">Battery Style ....</string>
 	<string name="header_title_battery_options">Colors</string>

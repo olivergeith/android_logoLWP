@@ -176,7 +176,8 @@
 		<item>"Wheel"</item>
 		<item>"Heart"</item>
 		<item>"Heart filled"</item>
-																
+		<item>"Easter-Egg"</item>
+																		
 	</string-array>
 	
 	<string-array name="maskValues">
@@ -197,7 +198,8 @@
 		<item>"14"</item>
 		<item>"15"</item>
 		<item>"16"</item>
-														
+		<item>"Easter-Egg"</item>
+																
 	</string-array>
 		
     

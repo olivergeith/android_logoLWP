@@ -685,6 +685,9 @@ public class Settings {
 				case "16":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskheart2), bWidth, bHeight, true);
 					break;
+				case "Easter-Egg":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskeasteregg), bWidth, bHeight, true);
+					break;
 				}
 			}
 		}

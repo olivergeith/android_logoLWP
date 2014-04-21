@@ -188,7 +188,7 @@ public class StyleListPreference extends ListPreference {
 					row.setEnabled(mEntryBooleans[position]);
 					text.setEnabled(mEntryBooleans[position]);
 					if (mEntryBooleans[position] == false) {
-						text.setText(text.getText() + " (Coming soon)");
+						text.setText(text.getText() + " (Premium)");
 					}
 				}
 			}
