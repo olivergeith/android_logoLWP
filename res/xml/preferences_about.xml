@@ -67,6 +67,11 @@
 	    </PreferenceCategory>
 	    
     <PreferenceCategory android:title="Special internal Options">
+	    <Preference 
+		    android:key="premium"
+    		android:defaultValue="false"
+		    android:title="Premium" 
+            />
         <CheckBoxPreference 
 		    android:key="debug"
     		android:defaultValue="false"

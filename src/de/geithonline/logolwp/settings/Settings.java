@@ -705,6 +705,13 @@ public class Settings {
 		return prefs.getBoolean("recolor", false);
 	}
 
+	public static boolean isPremium() {
+		if (prefs == null) {
+			return false;
+		}
+		return prefs.getBoolean("muimerp", false);
+	}
+
 	/**
 	 * Initializes some preferences on first run with defaults
 	 * 

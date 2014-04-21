@@ -30,8 +30,9 @@
     		android:key="battstatus_radius"
 		    android:title="@string/battstatus_radius"
 		    android:defaultValue="1.0"
-		    android:dialogMessage="@string/battstatus_radius" />
-	    
+		    android:dialogMessage="@string/battstatus_radius" 
+	        android:dependency="show_status"
+	    	    />
     </PreferenceCategory>
 
 
