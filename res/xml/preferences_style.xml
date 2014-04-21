@@ -137,19 +137,13 @@
 	        android:dependency="customLogo"
 	        />
         
-        <CheckBoxPreference 
-            android:key="maskLogo"
-            android:title="@string/maskLogo"
-            android:defaultValue="false"
-	        android:dependency="customLogo"
-            />
         <ListPreference
 			android:key="maskList"
             android:title="@string/maskList"
 			android:summary="@string/maskList_summary"
 			android:entries="@array/maskNames"
 			android:entryValues="@array/maskValues"
-	        android:dependency="maskLogo"
+	        android:dependency="customLogo"
 		/>
         
         

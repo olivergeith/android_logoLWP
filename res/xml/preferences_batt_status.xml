@@ -29,7 +29,7 @@
 	    <de.geithonline.android.basics.preferences.SliderPreference
     		android:key="battstatus_radius"
 		    android:title="@string/battstatus_radius"
-		    android:defaultValue="0.8"
+		    android:defaultValue="1.0"
 		    android:dialogMessage="@string/battstatus_radius" />
 	    
     </PreferenceCategory>

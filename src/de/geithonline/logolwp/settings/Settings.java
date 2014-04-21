@@ -42,13 +42,6 @@ public class Settings {
 	public static final int BATT_STATUS_STYLE_TEMP = 2;
 	public static final int BATT_STATUS_STYLE_VOLT = 3;
 
-	public static boolean isMaskLogo() {
-		if (prefs == null) {
-			return false;
-		}
-		return prefs.getBoolean("maskLogo", true);
-	}
-
 	public static boolean isKeepAspectRatio() {
 		if (prefs == null) {
 			return true;
@@ -619,12 +612,29 @@ public class Settings {
 		return defaultBmp;
 	}
 
+	public static String getMaskName() {
+		if (prefs == null) {
+			return "0";
+		}
+		final String name = prefs.getString("maskList", "0");
+		return name;
+	}
+
+	public static boolean isMaskLogo() {
+		if (prefs == null) {
+			return false;
+		}
+		return !getMaskName().endsWith("0");
+	}
+
 	public static Bitmap getLogoMask(final int bWidth, final int bHeight) {
 		if (prefs == null) {
 			mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar), bWidth, bHeight, true);
 		} else {
-			if (!maske.equals(prefs.getString("maskList", "1"))) {
-				maske = prefs.getString("maskList", "1");
+			if (!maske.equals(getMaskName())//
+					|| bWidth != mask.getWidth() //
+					|| bHeight != mask.getHeight()) {
+				maske = getMaskName();
 				switch (maske) {
 				default:
 				case "1":
@@ -656,6 +666,15 @@ public class Settings {
 					break;
 				case "10":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun2), bWidth, bHeight, true);
+					break;
+				case "11":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun3), bWidth, bHeight, true);
+					break;
+				case "12":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring1), bWidth, bHeight, true);
+					break;
+				case "13":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring2), bWidth, bHeight, true);
 					break;
 				}
 			}
