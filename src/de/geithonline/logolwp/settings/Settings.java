@@ -664,7 +664,7 @@ public class Settings {
 				case "9":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun1), bWidth, bHeight, true);
 					break;
-				case "10":
+				case "Sun 2":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun2), bWidth, bHeight, true);
 					break;
 				case "11":
