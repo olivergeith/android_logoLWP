@@ -682,8 +682,17 @@ public class Settings {
 				case "Gear 4":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear4), bWidth, bHeight, true);
 					break;
+				case "Saw":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksaw), bWidth, bHeight, true);
+					break;
 				case "Splash":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksplash), bWidth, bHeight, true);
+					break;
+				case "Square 1":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksquare), bWidth, bHeight, true);
+					break;
+				case "Square 2":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksquare2), bWidth, bHeight, true);
 					break;
 				case "Sun 1":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun1), bWidth, bHeight, true);
@@ -699,6 +708,9 @@ public class Settings {
 					break;
 				case "Ring 2":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring2), bWidth, bHeight, true);
+					break;
+				case "Ring 3":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring3), bWidth, bHeight, true);
 					break;
 				case "Wheel":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskwheel), bWidth, bHeight, true);
