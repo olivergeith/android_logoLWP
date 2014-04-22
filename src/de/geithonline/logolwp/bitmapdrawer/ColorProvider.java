@@ -3,8 +3,6 @@ package de.geithonline.logolwp.bitmapdrawer;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Color;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
@@ -14,6 +12,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader.TileMode;
 import android.graphics.Typeface;
 import de.geithonline.logolwp.settings.Settings;
+import de.geithonline.logolwp.utils.ColorFilterGenerator;
 import de.geithonline.logolwp.utils.ColorHelper;
 
 public class ColorProvider {
@@ -173,7 +172,7 @@ public class ColorProvider {
 	}
 
 	public Paint getZeigerPaint(final int level) {
-		final Paint paint = getZeigerPaint(level, false);
+		final Paint paint = getZeigerPaint(level, true);
 		return paint;
 	}
 
@@ -185,6 +184,10 @@ public class ColorProvider {
 		paint.setStyle(Style.FILL);
 		if (dropShadow) {
 			paint.setShadowLayer(10, 0, 0, Color.BLACK);
+		}
+		if (Settings.isZeigerSRCIN()) {
+			final PorterDuffXfermode xfermode = new PorterDuffXfermode(Mode.SRC_IN);
+			paint.setXfermode(xfermode);
 		}
 		return paint;
 	}
@@ -236,16 +239,10 @@ public class ColorProvider {
 	// ####################################################################
 	protected Paint getGrayscalePaint() {
 		final Paint bgPaint = new Paint();
-		final ColorMatrix cm = new ColorMatrix();
-		// final ColorMatrix cm = new ColorMatrix(new float[]
-		// { 0.5f, 0.5f, 0.5f, 0, 0, //
-		// 0.5f, 0.5f, 0.5f, 0, 0, //
-		// 0.5f, 0.5f, 0.5f, 0, 0, //
-		// 0, 0, 0, 1, 0, 0,
-		// 0, 0, 0, 0, 1, 0 });
-		cm.setSaturation(0);
-		final ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
-		bgPaint.setColorFilter(f);
+
+		final int brightness = Math.round(Settings.getLogoBackgroundBrightness() * 200) - 200;
+		bgPaint.setColorFilter(ColorFilterGenerator.adjustColor(brightness, 0, -100, 0));
+
 		return bgPaint;
 	}
 
@@ -262,6 +259,10 @@ public class ColorProvider {
 		final BitmapShader fillBMPshader = new BitmapShader(bitmap, TileMode.REPEAT, TileMode.REPEAT);
 		paint.setStyle(Paint.Style.FILL);
 		paint.setShader(fillBMPshader);
+
+		final int hue = Math.round(Settings.getLogoHue() * 360) - 180;
+		paint.setColorFilter(ColorFilterGenerator.adjustHue(hue));
+
 		if (Settings.isReColorBitmap()) {
 			final int color = getColorForLevel(level);
 			final PorterDuffColorFilter cf = new PorterDuffColorFilter(color, Mode.MULTIPLY);
@@ -269,5 +270,4 @@ public class ColorProvider {
 		}
 		return paint;
 	}
-
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_version">1.2</string>
-    <string name="app_name">LogoBatteryLWP V1.2</string>
-	<string name="wallpaper_description">LogoBatteryLWP V1.2</string>
+	<string name="app_version">1.3</string>
+    <string name="app_name">LogoBatteryLWP V1.3</string>
+	<string name="wallpaper_description">LogoBatteryLWP V1.3</string>
 
 	<string name="premium_only">Premium Version only</string>
 	
@@ -58,7 +58,9 @@
     <string name="show_zeiger">Show Pointer</string>
 	<string name="color_zeiger">Pointer Color</string>
     <string name="color_zeiger_summary">Some Batteries have a Pointer - set its color here</string>
-    		
+	<string name="zeiger_srcin">Pointer only on non-transparent logo-image</string>
+    <string name="zeiger_srcin_summary">Pointer only in non-transparent areas of logo-image</string>
+			
     <string name="header_size">Battery Size</string>
 	<string name="header_size_summary">Battery Size and Position ....</string>
     <string name="header_title_battery">Battery Style</string>
@@ -141,7 +143,11 @@
 	<string name="customLogo">Use custom Logo</string>
 	<string name="logoPicker">Logo Image</string>
 	<string name="logoPicker_summary">Pick a custom logo as battery-image....the Logo should be a square image and around 500x500 pixel for best results!</string>
-														
+	<string name="logo_background_brightness">Logo Background Brightness</string>
+	<string name="logo_background_brightness_summary">Brightness of grayscaled Background of logo</string>
+	<string name="logo_hue">Change Hue of Logo</string>
+	<string name="logo_hue_summary">Hue of Logo</string>
+																	
 	<string name="zeiger_length">Pointer Lenth</string>
 	
 		

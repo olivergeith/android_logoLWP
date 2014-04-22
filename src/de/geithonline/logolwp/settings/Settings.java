@@ -337,6 +337,13 @@ public class Settings {
 		return col;
 	}
 
+	public static boolean isZeigerSRCIN() {
+		if (prefs == null) {
+			return true;
+		}
+		return prefs.getBoolean("zeiger_srcin", false);
+	}
+
 	public static float getZeigerLength() {
 		if (prefs == null) {
 			return 1.0f;
@@ -625,6 +632,20 @@ public class Settings {
 			return false;
 		}
 		return !getMaskName().endsWith("0");
+	}
+
+	public static float getLogoBackgroundBrightness() {
+		if (prefs == null) {
+			return 1.0f;
+		}
+		return prefs.getFloat("logo_background_brightness", 1.0f);
+	}
+
+	public static float getLogoHue() {
+		if (prefs == null) {
+			return 0.5f;
+		}
+		return prefs.getFloat("logo_hue", 0.5f);
 	}
 
 	public static Bitmap getLogoMask(final int bWidth, final int bHeight) {

@@ -2,10 +2,7 @@ package de.geithonline.logolwp.bitmapdrawer;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import de.geithonline.logolwp.settings.Settings;
 import de.geithonline.logolwp.utils.BitmapHelper;
@@ -99,9 +96,7 @@ public class BitmapDrawerLogoV2 extends BitmapDrawer {
 		// Zeiger
 		if (Settings.isShowZeiger()) {
 			final Paint zp = getZeigerPaint(level);
-			zp.setShadowLayer(10, 0, 0, Color.BLACK);
-			final PorterDuffXfermode xfermode = new PorterDuffXfermode(Mode.SRC_IN);
-			zp.setXfermode(xfermode);
+
 			final float zeigerdicke = 0.005f;
 			if (Settings.isFlip()) {
 				final float levelX = bWidth * level / 100;

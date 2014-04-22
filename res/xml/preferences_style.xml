@@ -31,12 +31,21 @@
             android:title="@string/customLogo"
             android:defaultValue="false"
             />
+
         <Preference
 	        android:key="logoPicker"
 	        android:summary="@string/logoPicker_summary"
 	        android:title="@string/logoPicker"
 	        android:dependency="customLogo"
 	        />
+
+        <de.geithonline.android.basics.preferences.SliderPreference
+    		android:key="logo_background_brightness"
+		    android:title="@string/logo_background_brightness"
+	        android:summary="@string/logo_background_brightness_summary"
+		    android:defaultValue="1.0"
+		    android:dialogMessage="@string/logo_background_brightness" />
+        
         
         <ListPreference
 			android:key="maskList"
@@ -77,13 +86,24 @@
             android:title="@string/color_zeiger" 
             android:summary="@string/color_zeiger_summary"
             android:defaultValue="@integer/COLOR_WHITE"
+		    android:dependency="show_zeiger"
             />
         
+        <CheckBoxPreference 
+            android:key="zeiger_srcin"
+            android:title="@string/zeiger_srcin"
+            android:summary="@string/zeiger_srcin_summary"
+            android:defaultValue="true"
+            android:disableDependentsState="true"
+		    android:dependency="show_zeiger"
+            />
         <de.geithonline.android.basics.preferences.SliderPreference
     		android:key="zeiger_length"
 		    android:title="@string/zeiger_length"
 		    android:defaultValue="1.0"
-		    android:dialogMessage="@string/zeiger_length" />
+		    android:dialogMessage="@string/zeiger_length" 
+		    android:dependency="zeiger_srcin"
+		    />
         
         <CheckBoxPreference 
             android:key="show_rand"

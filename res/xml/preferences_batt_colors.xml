@@ -10,6 +10,13 @@
             android:defaultValue="false"
             />
  
+         <de.geithonline.android.basics.preferences.SliderPreference
+    		android:key="logo_hue"
+		    android:title="@string/logo_hue"
+	        android:summary="@string/logo_hue_summary"
+		    android:defaultValue="0.5"
+		    android:dialogMessage="@string/logo_hue" />
+         
 	    <de.geithonline.android.basics.preferences.colorpicker.ColorPickerPreference
 	        android:key="battery_color"
 	        android:title="@string/color" 

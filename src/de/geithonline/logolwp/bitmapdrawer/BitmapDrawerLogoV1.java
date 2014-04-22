@@ -2,7 +2,6 @@ package de.geithonline.logolwp.bitmapdrawer;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import de.geithonline.logolwp.settings.Settings;
 import de.geithonline.logolwp.utils.BitmapHelper;
@@ -96,8 +95,12 @@ public class BitmapDrawerLogoV1 extends BitmapDrawer {
 		// Zeiger
 		if (Settings.isShowZeiger()) {
 			final Paint zp = getZeigerPaint(level);
-			zp.setShadowLayer(10, 0, 0, Color.BLACK);
-			final int radius = Math.round(bWidth / 2 * Settings.getZeigerLength());
+			int radius = 0;
+			if (Settings.isZeigerSRCIN()) {
+				radius = Math.round(bWidth);
+			} else {
+				radius = Math.round(bWidth / 2 * Settings.getZeigerLength());
+			}
 			if (Settings.isFlip()) {
 				bitmapCanvas.drawArc(getRectForRadius(radius), 270 + Math.round(level * 3.6f) - 0.75f, 1.5f, true, zp);
 			} else {
