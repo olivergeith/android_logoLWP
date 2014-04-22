@@ -246,14 +246,6 @@ public class ColorProvider {
 		return bgPaint;
 	}
 
-	protected Paint getBitmapPaint(final Bitmap bitmap) {
-		final Paint paint = new Paint();
-		final BitmapShader fillBMPshader = new BitmapShader(bitmap, TileMode.REPEAT, TileMode.REPEAT);
-		paint.setStyle(Paint.Style.FILL);
-		paint.setShader(fillBMPshader);
-		return paint;
-	}
-
 	protected Paint getBitmapPaint(final int level, final Bitmap bitmap) {
 		final Paint paint = new Paint();
 		final BitmapShader fillBMPshader = new BitmapShader(bitmap, TileMode.REPEAT, TileMode.REPEAT);
@@ -261,7 +253,9 @@ public class ColorProvider {
 		paint.setShader(fillBMPshader);
 
 		final int hue = Math.round(Settings.getLogoHue() * 360) - 180;
-		paint.setColorFilter(ColorFilterGenerator.adjustHue(hue));
+		if (hue != 0) {
+			paint.setColorFilter(ColorFilterGenerator.adjustHue(hue));
+		}
 
 		if (Settings.isReColorBitmap()) {
 			final int color = getColorForLevel(level);

@@ -658,52 +658,55 @@ public class Settings {
 				maske = getMaskName();
 				switch (maske) {
 				default:
-				case "1":
+				case "Star":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar), bWidth, bHeight, true);
 					break;
-				case "2":
+				case "Rounded Square":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskroundedrect), bWidth, bHeight, true);
 					break;
-				case "3":
+				case "Cicle":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskcircle), bWidth, bHeight, true);
 					break;
-				case "4":
+				case "Flower":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskflower), bWidth, bHeight, true);
 					break;
-				case "5":
+				case "Gear 1":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear1), bWidth, bHeight, true);
 					break;
-				case "6":
+				case "Gear 2":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear2), bWidth, bHeight, true);
 					break;
-				case "7":
+				case "Gear 3":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear3), bWidth, bHeight, true);
 					break;
-				case "8":
+				case "Gear 4":
+					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear4), bWidth, bHeight, true);
+					break;
+				case "Splash":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksplash), bWidth, bHeight, true);
 					break;
-				case "9":
+				case "Sun 1":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun1), bWidth, bHeight, true);
 					break;
 				case "Sun 2":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun2), bWidth, bHeight, true);
 					break;
-				case "11":
+				case "Sun 3":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun3), bWidth, bHeight, true);
 					break;
-				case "12":
+				case "Ring 1":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring1), bWidth, bHeight, true);
 					break;
-				case "13":
+				case "Ring 2":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring2), bWidth, bHeight, true);
 					break;
-				case "14":
+				case "Wheel":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskwheel), bWidth, bHeight, true);
 					break;
-				case "15":
+				case "Heart":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskheart), bWidth, bHeight, true);
 					break;
-				case "16":
+				case "Heart filled":
 					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskheart2), bWidth, bHeight, true);
 					break;
 				case "Easter-Egg":

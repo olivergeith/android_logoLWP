@@ -167,6 +167,7 @@
 		<item>"Gear 1"</item>
 		<item>"Gear 2"</item>
 		<item>"Gear 3"</item>
+		<item>"Gear 4"</item>
 		<item>"Splash"</item>
 		<item>"Sun 1"</item>
 		<item>"Sun 2"</item>
@@ -182,22 +183,23 @@
 	
 	<string-array name="maskValues">
 		<item>"0"</item>
-	    <item>"1"</item>
-		<item>"2"</item>
-		<item>"3"</item>
-		<item>"4"</item>
-		<item>"5"</item>
-		<item>"6"</item>
-		<item>"7"</item>
-		<item>"8"</item>
-		<item>"9"</item>
+        <item>"Star"</item>
+		<item>"Rounded Square"</item>
+		<item>"Cicle"</item>
+		<item>"Flower"</item>
+		<item>"Gear 1"</item>
+		<item>"Gear 2"</item>
+		<item>"Gear 3"</item>
+		<item>"Gear 4"</item>
+		<item>"Splash"</item>
+		<item>"Sun 1"</item>
 		<item>"Sun 2"</item>
-		<item>"11"</item>
-		<item>"12"</item>
-		<item>"13"</item>
-		<item>"14"</item>
-		<item>"15"</item>
-		<item>"16"</item>
+		<item>"Sun 3"</item>
+		<item>"Ring 1"</item>
+		<item>"Ring 2"</item>
+		<item>"Wheel"</item>
+		<item>"Heart"</item>
+		<item>"Heart filled"</item>
 		<item>"Easter-Egg"</item>
 																
 	</string-array>
