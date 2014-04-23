@@ -28,6 +28,7 @@ public class BattPreferencesFragment extends PreferenceFragment {
 	public static final String STYLE_PICKER_KEY = "batt_style";
 	private ListPreference stylePref;
 	private Preference logoPicker;
+	private Preference maskPicker;
 
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
@@ -67,9 +68,18 @@ public class BattPreferencesFragment extends PreferenceFragment {
 			}
 		});
 
-		setLogoPickerData();
+		// Mask Picker
+		maskPicker = findPreference("maskList");
+		maskPicker.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			@Override
+			public boolean onPreferenceChange(final Preference preference, final Object newValue) {
+				setMaskPickerData((String) newValue);
+				return true;
+			}
+		});
 
-		// initialize Properties
+		setMaskPickerData(null);
+		setLogoPickerData();
 		enableSettingsForStyle(Settings.getStyle());
 		enableProFeatures();
 	}
@@ -155,6 +165,19 @@ public class BattPreferencesFragment extends PreferenceFragment {
 			final Drawable dr = BitmapHelper.resizeToIcon128(b);
 			// logoPicker.setSummary(Settings.getCustomLogoFilePath());
 			logoPicker.setIcon(dr);
+		}
+	}
+
+	private void setMaskPickerData(final String newVal) {
+		String maske = Settings.getMaskName();
+		if (newVal != null && !newVal.isEmpty()) {
+			maske = newVal;
+		}
+		if (maske != null) {
+			final Bitmap b = Settings.getLogoMaskIconCached(maske, 128, 128);
+			final Drawable dr = BitmapHelper.resizeToIcon128(b);
+			maskPicker.setSummary("Mask: " + maske);
+			maskPicker.setIcon(dr);
 		}
 	}
 }

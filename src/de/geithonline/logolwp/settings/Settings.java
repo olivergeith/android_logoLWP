@@ -35,7 +35,8 @@ public class Settings {
 	public static int iconSize;
 	private static Bitmap defaultlogo;
 	private static Bitmap mask;
-	private static String maske = "000";
+	private static String maskname = "000";
+	private static Bitmap maskicon;
 
 	public static final int BATT_STATUS_STYLE_TEMP_VOLT_HEALTH = 0;
 	public static final int BATT_STATUS_STYLE_TEMP_VOLT = 1;
@@ -449,13 +450,10 @@ public class Settings {
 			options.inTempStorage = new byte[32 * 1024];
 			options.inJustDecodeBounds = true;
 			BitmapFactory.decodeFile(filePath, options);
-
 			// Calculate inSampleSize
 			options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
 			// Decode bitmap with inSampleSize set
 			options.inJustDecodeBounds = false;
-
 			final Bitmap b = BitmapFactory.decodeFile(filePath, options);
 			BitmapHelper.logBackgroundFileInfo(filePath);
 			return b;
@@ -463,16 +461,35 @@ public class Settings {
 		return null;
 	}
 
+	/**
+	 * @return Bitmap or null...
+	 */
+	private static Bitmap getCustomResourceSampled(final int resourceID, final int reqWidth, final int reqHeight) {
+		final BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+		options.inDither = false; // Disable Dithering mode
+		options.inPurgeable = true; // Tell to gc that whether it needs free
+									// memory, the Bitmap can be cleared
+		options.inInputShareable = true; // Which kind of reference will be
+											// used to recover the Bitmap
+											// data after being clear, when
+											// it will be used in the future
+		options.inTempStorage = new byte[32 * 1024];
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeResource(context.getResources(), resourceID, options);
+		// Calculate inSampleSize
+		options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+		// Decode bitmap with inSampleSize set
+		options.inJustDecodeBounds = false;
+		final Bitmap b = BitmapFactory.decodeResource(context.getResources(), resourceID, options);
+		return b;
+	}
+
 	public static int calculateInSampleSize(final BitmapFactory.Options options, final int reqWidth, final int reqHeight) {
 		// Raw height and width of image
 		final int height = options.outHeight;
 		final int width = options.outWidth;
 		int inSampleSize = 1;
-		// Log.i("GEITH", "height =" + height);
-		// Log.i("GEITH", "reqHeight =" + reqHeight);
-		// Log.i("GEITH", "width =" + width);
-		// Log.i("GEITH", "reqWidth =" + reqWidth);
-
 		if (height > reqHeight || width > reqWidth) {
 
 			final int halfHeight = height / 2;
@@ -648,86 +665,111 @@ public class Settings {
 		return prefs.getFloat("logo_hue", 0.5f);
 	}
 
-	public static Bitmap getLogoMask(final int bWidth, final int bHeight) {
+	public static Bitmap getLogoMaskCached(final int bWidth, final int bHeight) {
 		if (prefs == null) {
 			mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar), bWidth, bHeight, true);
 		} else {
-			if (!maske.equals(getMaskName())//
+			if (!maskname.equals(getMaskName())//
 					|| bWidth != mask.getWidth() //
 					|| bHeight != mask.getHeight()) {
-				maske = getMaskName();
-				switch (maske) {
-				default:
-				case "Star":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskstar), bWidth, bHeight, true);
-					break;
-				case "Rounded Square":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskroundedrect), bWidth, bHeight, true);
-					break;
-				case "Cicle":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskcircle), bWidth, bHeight, true);
-					break;
-				case "Flower":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskflower), bWidth, bHeight, true);
-					break;
-				case "Gear 1":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear1), bWidth, bHeight, true);
-					break;
-				case "Gear 2":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear2), bWidth, bHeight, true);
-					break;
-				case "Gear 3":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear3), bWidth, bHeight, true);
-					break;
-				case "Gear 4":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskgear4), bWidth, bHeight, true);
-					break;
-				case "Saw":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksaw), bWidth, bHeight, true);
-					break;
-				case "Splash":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksplash), bWidth, bHeight, true);
-					break;
-				case "Square 1":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksquare), bWidth, bHeight, true);
-					break;
-				case "Square 2":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksquare2), bWidth, bHeight, true);
-					break;
-				case "Sun 1":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun1), bWidth, bHeight, true);
-					break;
-				case "Sun 2":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun2), bWidth, bHeight, true);
-					break;
-				case "Sun 3":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.masksun3), bWidth, bHeight, true);
-					break;
-				case "Ring 1":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring1), bWidth, bHeight, true);
-					break;
-				case "Ring 2":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring2), bWidth, bHeight, true);
-					break;
-				case "Ring 3":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskring3), bWidth, bHeight, true);
-					break;
-				case "Wheel":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskwheel), bWidth, bHeight, true);
-					break;
-				case "Heart":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskheart), bWidth, bHeight, true);
-					break;
-				case "Heart filled":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskheart2), bWidth, bHeight, true);
-					break;
-				case "Easter-Egg":
-					mask = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.maskeasteregg), bWidth, bHeight, true);
-					break;
-				}
+				maskname = getMaskName();
+				mask = getMask(maskname, bWidth, bHeight);
 			}
 		}
 		return mask;
+	}
+
+	public static Bitmap getLogoMaskIconCached(final String name, final int bWidth, final int bHeight) {
+		maskicon = getMask(name, bWidth, bHeight);
+		return maskicon;
+	}
+
+	private static Bitmap getMask(final String name, final int bWidth, final int bHeight) {
+		Bitmap bm;
+		int resid = 0;
+		switch (name) {
+		default:
+		case "No Mask":
+			resid = R.drawable.masknon;
+			break;
+		case "Star":
+			resid = R.drawable.maskstar;
+			break;
+		case "Rounded Square":
+			resid = R.drawable.maskroundedrect;
+			break;
+		case "Cicle":
+			resid = R.drawable.maskcircle;
+			break;
+		case "Flower":
+			resid = R.drawable.maskflower;
+			break;
+		case "Flower 2":
+			resid = R.drawable.maskflower2;
+			break;
+		case "Gear 1":
+			resid = R.drawable.maskgear1;
+			break;
+		case "Gear 2":
+			resid = R.drawable.maskgear2;
+			break;
+		case "Gear 3":
+			resid = R.drawable.maskgear3;
+			break;
+		case "Gear 4":
+			resid = R.drawable.maskgear4;
+			break;
+		case "Saw":
+			resid = R.drawable.masksaw;
+			break;
+		case "Saw 2":
+			resid = R.drawable.masksaw2;
+			break;
+		case "Saw 3":
+			resid = R.drawable.masksaw3;
+			break;
+		case "Splash":
+			resid = R.drawable.masksplash;
+			break;
+		case "Square 1":
+			resid = R.drawable.masksquare;
+			break;
+		case "Square 2":
+			resid = R.drawable.masksquare2;
+			break;
+		case "Sun 1":
+			resid = R.drawable.masksun1;
+			break;
+		case "Sun 2":
+			resid = R.drawable.masksun2;
+			break;
+		case "Sun 3":
+			resid = R.drawable.masksun3;
+			break;
+		case "Ring 1":
+			resid = R.drawable.maskring1;
+			break;
+		case "Ring 2":
+			resid = R.drawable.maskring2;
+			break;
+		case "Ring 3":
+			resid = R.drawable.maskring3;
+			break;
+		case "Wheel":
+			resid = R.drawable.maskwheel;
+			break;
+		case "Heart":
+			resid = R.drawable.maskheart;
+			break;
+		case "Heart filled":
+			resid = R.drawable.maskheart2;
+			break;
+		case "Easter-Egg":
+			resid = R.drawable.maskeasteregg;
+			break;
+		}
+		bm = Bitmap.createScaledBitmap(getCustomResourceSampled(resid, bWidth, bWidth), bWidth, bHeight, true);
+		return bm;
 	}
 
 	public static boolean isFlip() {

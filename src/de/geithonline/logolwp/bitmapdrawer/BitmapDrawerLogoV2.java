@@ -62,7 +62,7 @@ public class BitmapDrawerLogoV2 extends BitmapDrawer {
 
 		// Zuschnitt auf Maske
 		if (Settings.isMaskLogo()) {
-			final Bitmap maskBitmap = Settings.getLogoMask(bWidth, bHeight);
+			final Bitmap maskBitmap = Settings.getLogoMaskCached(bWidth, bHeight);
 			bitmap = BitmapHelper.getMaskedBitmap(bitmap, maskBitmap);
 		}
 		// zeiger

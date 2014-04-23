@@ -164,11 +164,14 @@
 		<item>"Rounded Square"</item>
 		<item>"Cicle"</item>
 		<item>"Flower"</item>
+		<item>"Flower 2"</item>
 		<item>"Gear 1"</item>
 		<item>"Gear 2"</item>
 		<item>"Gear 3"</item>
 		<item>"Gear 4"</item>
 		<item>"Saw"</item>
+		<item>"Saw 2"</item>
+		<item>"Saw 3"</item>
 		<item>"Splash"</item>
 		<item>"Square 1"</item>
 		<item>"Square 2"</item>
@@ -191,11 +194,14 @@
 		<item>"Rounded Square"</item>
 		<item>"Cicle"</item>
 		<item>"Flower"</item>
+		<item>"Flower 2"</item>
 		<item>"Gear 1"</item>
 		<item>"Gear 2"</item>
 		<item>"Gear 3"</item>
 		<item>"Gear 4"</item>
 		<item>"Saw"</item>
+		<item>"Saw 2"</item>
+		<item>"Saw 3"</item>
 		<item>"Splash"</item>
 		<item>"Square 1"</item>
 		<item>"Square 2"</item>
@@ -212,6 +218,37 @@
 																
 	</string-array>
 		
-    
+	<array name="maskResValues">
+		<item>@drawable/masknon</item>
+        <item>@drawable/maskstar</item>
+		<item>@drawable/maskroundedrect</item>
+		<item>@drawable/maskcircle</item>
+		<item>@drawable/maskflower</item>
+		<item>@drawable/maskflower2</item>
+		<item>@drawable/maskgear1</item>
+		<item>@drawable/maskgear2</item>
+		<item>@drawable/maskgear3</item>
+		<item>@drawable/maskgear4</item>
+		<item>@drawable/masksaw</item>
+		<item>@drawable/masksaw2</item>
+		<item>@drawable/masksaw3</item>
+		<item>@drawable/masksplash</item>
+		<item>@drawable/masksquare</item>
+		<item>@drawable/masksquare2</item>
+		<item>@drawable/masksun1</item>
+		<item>@drawable/masksun2</item>
+		<item>@drawable/masksun3</item>
+		<item>@drawable/maskring1</item>
+		<item>@drawable/maskring2</item>
+		<item>@drawable/maskring3</item>
+		<item>@drawable/maskwheel</item>
+		<item>@drawable/maskheart</item>
+		<item>@drawable/maskheart2</item>
+		<item>@drawable/maskeasteregg</item>
+																
+	</array>
+	
+	
+	
     
 </resources>
