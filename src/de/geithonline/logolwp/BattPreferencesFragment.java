@@ -123,7 +123,11 @@ public class BattPreferencesFragment extends PreferenceFragment {
 	}
 
 	private void enableProFeatures() {
-		// Nothing so far
+		final Preference bgBrightness = findPreference("logo_background_brightness");
+		bgBrightness.setEnabled(Settings.isPremium());
+		if (!Settings.isPremium()) {
+			Settings.prefs.edit().putFloat("logo_background_brightness", 1.0f).commit();
+		}
 	}
 
 	private void enableSettingsForStyle(final String style) {
