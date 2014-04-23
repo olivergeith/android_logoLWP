@@ -648,7 +648,7 @@ public class Settings {
 		if (prefs == null) {
 			return false;
 		}
-		return !getMaskName().endsWith("0");
+		return !getMaskName().endsWith("No Mask");
 	}
 
 	public static float getLogoBackgroundBrightness() {
@@ -692,6 +692,18 @@ public class Settings {
 		case "No Mask":
 			resid = R.drawable.masknon;
 			break;
+		case "Battery 1":
+			resid = R.drawable.maskbattery;
+			break;
+		case "Battery 2":
+			resid = R.drawable.maskbattery2;
+			break;
+		case "Battery 3":
+			resid = R.drawable.maskbattery3;
+			break;
+		case "Battery 4":
+			resid = R.drawable.maskbattery4;
+			break;
 		case "Star":
 			resid = R.drawable.maskstar;
 			break;
@@ -706,6 +718,9 @@ public class Settings {
 			break;
 		case "Flower 2":
 			resid = R.drawable.maskflower2;
+			break;
+		case "Flower 3":
+			resid = R.drawable.maskflower3;
 			break;
 		case "Gear 1":
 			resid = R.drawable.maskgear1;
@@ -763,6 +778,21 @@ public class Settings {
 			break;
 		case "Heart filled":
 			resid = R.drawable.maskheart2;
+			break;
+		case "Puzzle":
+			resid = R.drawable.maskpuzzle;
+			break;
+		case "Rom Omni":
+			resid = R.drawable.maskomni;
+			break;
+		case "Rom CyanogenMOD":
+			resid = R.drawable.maskcanogenmod;
+			break;
+		case "Rom Pacman":
+			resid = R.drawable.maskpackman;
+			break;
+		case "Rom AOKP":
+			resid = R.drawable.maskaokp;
 			break;
 		case "Easter-Egg":
 			resid = R.drawable.maskeasteregg;
