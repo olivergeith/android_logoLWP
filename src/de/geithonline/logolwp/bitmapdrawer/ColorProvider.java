@@ -262,6 +262,9 @@ public class ColorProvider {
 			final PorterDuffColorFilter cf = new PorterDuffColorFilter(color, Mode.MULTIPLY);
 			paint.setColorFilter(cf);
 		}
+		// if (dropShadow) {
+		paint.setShadowLayer(10, 0, 0, Color.BLACK);
+		// }
 		return paint;
 	}
 }

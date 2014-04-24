@@ -38,7 +38,14 @@
 	        android:title="@string/logoPicker"
 	        android:dependency="customLogo"
 	        />
-
+        
+        <de.geithonline.android.basics.preferences.SliderPreference
+    		android:key="logo_hue"
+		    android:title="@string/logo_hue"
+	        android:summary="@string/logo_hue_summary"
+		    android:defaultValue="0.5"
+		    android:dialogMessage="@string/logo_hue" />
+        
         <de.geithonline.android.basics.preferences.SliderPreference
     		android:key="logo_background_brightness"
 		    android:title="@string/logo_background_brightness"
@@ -46,14 +53,12 @@
 		    android:defaultValue="1.0"
 		    android:dialogMessage="@string/logo_background_brightness" />
         
-        
         <ListPreference
 			android:key="maskList"
             android:title="@string/maskList"
 			android:summary="@string/maskList_summary"
 			android:entries="@array/maskNames"
 			android:entryValues="@array/maskValues"
-	        android:dependency="customLogo"
 		/>
 
         

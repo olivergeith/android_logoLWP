@@ -134,19 +134,19 @@
 	<string name="battstatus_radius">Radius of Battery Status Text</string>
 	<string name="battstatus_radius_summary">The Radius, where the Battery-Status-Text should be displayed</string>
 	
-	<string name="keepAspectRatio">Keep the aspect ratio of the Background Image</string>
-	<string name="keepAspectRatio_summary">If disabled the image is scaled to exact dimensions of the screen (no background sliding in that case)</string>
+	<string name="keepAspectRatio">Keep the aspect ratio of the Background-Image</string>
+	<string name="keepAspectRatio_summary">If disabled the Background-Image is scaled to exact dimensions of the screen (no background sliding in that case)</string>
 
-	<string name="maskLogo">Use a mask for the logo</string>
+	<string name="maskLogo">Use a mask for the Logo-Image</string>
 	<string name="maskList">Choose a mask</string>
-	<string name="maskList_summary">Choose a mask to crop the logo into a special shape</string>
-	<string name="customLogo">Use custom Logo</string>
-	<string name="logoPicker">Logo Image</string>
-	<string name="logoPicker_summary">Pick a custom logo as battery-image....the Logo should be a square image and around 500x500 pixel for best results!</string>
+	<string name="maskList_summary">Choose a mask to crop the Logo-Image into a special Shape</string>
+	<string name="customLogo">Use custom Logo-Image</string>
+	<string name="logoPicker">Choose a Logo-Image</string>
+	<string name="logoPicker_summary">Pick a custom Logo-Image as Battery-Image....the Logo-Image can be any image, but for good results it should be a square image and at least around 500x500 pixel!</string>
 	<string name="logo_background_brightness">Logo Background Brightness</string>
 	<string name="logo_background_brightness_summary">Brightness of grayscaled Background of logo</string>
-	<string name="logo_hue">Change Hue of Logo</string>
-	<string name="logo_hue_summary">Hue of Logo</string>
+	<string name="logo_hue">Change Hue of Logo-Image</string>
+	<string name="logo_hue_summary">Hue of Logo-Image</string>
 																	
 	<string name="zeiger_length">Pointer Lenth</string>
 	

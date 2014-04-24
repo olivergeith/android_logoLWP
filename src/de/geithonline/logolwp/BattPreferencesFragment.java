@@ -3,13 +3,13 @@ package de.geithonline.logolwp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -23,32 +23,29 @@ import de.geithonline.logolwp.utils.URIHelper;
 /**
  * This fragment shows the preferences for the first header.
  */
-public class BattPreferencesFragment extends PreferenceFragment {
+public class BattPreferencesFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener {
 	private final int PICK_LOGO = 3;
 	public static final String STYLE_PICKER_KEY = "batt_style";
 	private ListPreference stylePref;
 	private Preference logoPicker;
 	private Preference maskPicker;
+	private Preference hueSlider;
+	private Preference bgBrightnessSlider;
 
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preferences_style);
 
+		Settings.prefs.registerOnSharedPreferenceChangeListener(this);
+
 		// initializing Members
 		stylePref = (ListPreference) findPreference(STYLE_PICKER_KEY);
-		// changelistener auf stylepicker
-		stylePref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-
-			@Override
-			public boolean onPreferenceChange(final Preference preference, final Object newStyle) {
-				enableSettingsForStyle((String) newStyle);
-				return true;
-			}
-		});
-
-		// Logopicker
 		logoPicker = findPreference("logoPicker");
+		maskPicker = findPreference("maskList");
+		hueSlider = findPreference("logo_hue");
+		bgBrightnessSlider = findPreference("logo_background_brightness");
+
 		logoPicker.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 			@Override
 			public boolean onPreferenceClick(final Preference preference) {
@@ -59,26 +56,8 @@ public class BattPreferencesFragment extends PreferenceFragment {
 				return true;
 			}
 		});
-		final Preference customLogo = findPreference("customLogo");
-		customLogo.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(final Preference preference) {
-				setLogoPickerData();
-				return true;
-			}
-		});
 
-		// Mask Picker
-		maskPicker = findPreference("maskList");
-		maskPicker.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-			@Override
-			public boolean onPreferenceChange(final Preference preference, final Object newValue) {
-				setMaskPickerData((String) newValue);
-				return true;
-			}
-		});
-
-		setMaskPickerData(null);
+		setMaskPickerData();
 		setLogoPickerData();
 		enableSettingsForStyle(Settings.getStyle());
 		enableProFeatures();
@@ -162,22 +141,46 @@ public class BattPreferencesFragment extends PreferenceFragment {
 	private void setLogoPickerData() {
 		final Bitmap b = Settings.getCustomLogoSampled(128, 128);
 		if (b != null) {
-			final Drawable dr = BitmapHelper.resizeToIcon128(b);
-			// logoPicker.setSummary(Settings.getCustomLogoFilePath());
-			logoPicker.setIcon(dr);
+			final int hue = Math.round(Settings.getLogoHue() * 360) - 180;
+			final Bitmap huedBitmap = BitmapHelper.getColorFilteredBitmap(b, 0, 0, 0, hue);
+			final int brightness = Math.round(Settings.getLogoBackgroundBrightness() * 200) - 200;
+			final Bitmap grayBitmap = BitmapHelper.getColorFilteredBitmap(b, brightness, 0, -100, 0);
+			final Drawable orgdr = BitmapHelper.resizeToIcon128(b);
+			final Drawable huedr = BitmapHelper.resizeToIcon128(huedBitmap);
+			final Drawable graydr = BitmapHelper.resizeToIcon128(grayBitmap);
+			logoPicker.setIcon(orgdr);
+			hueSlider.setIcon(huedr);
+			bgBrightnessSlider.setIcon(graydr);
 		}
 	}
 
-	private void setMaskPickerData(final String newVal) {
-		String maske = Settings.getMaskName();
-		if (newVal != null && !newVal.isEmpty()) {
-			maske = newVal;
-		}
+	private void setMaskPickerData() {
+		final String maske = Settings.getMaskName();
 		if (maske != null) {
 			final Bitmap b = Settings.getLogoMaskIconCached(maske, 128, 128);
 			final Drawable dr = BitmapHelper.resizeToIcon128(b);
 			maskPicker.setSummary("Mask: " + maske);
 			maskPicker.setIcon(dr);
 		}
+	}
+
+	@Override
+	public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
+		switch (key) {
+		case "logo_background_brightness":
+		case "customLogo":
+		case "logo_hue":
+			setLogoPickerData();
+			break;
+		case "maskList":
+			setMaskPickerData();
+			break;
+		case "batt_style":
+			enableSettingsForStyle(Settings.getStyle());
+			break;
+		default:
+			break;
+		}
+
 	}
 }

@@ -79,6 +79,28 @@ public class BitmapHelper {
 		return a;
 	}
 
+	/**
+	 * @param inBitmap
+	 *            needs to be recycled outside!!!
+	 * @param brightness
+	 *            -100 bis 100
+	 * @param contrast
+	 *            -100 bis 100
+	 * @param saturation
+	 *            -100 bis 100
+	 * @param hue
+	 *            -180 bis 180
+	 * @return
+	 */
+	public static Bitmap getColorFilteredBitmap(final Bitmap inBitmap, final int brightness, final int contrast, final int saturation, final int hue) {
+		final Bitmap outBitmap = Bitmap.createBitmap(inBitmap.getWidth(), inBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+		final Canvas c = new Canvas(outBitmap);
+		final Paint paint = new Paint();
+		paint.setColorFilter(ColorFilterGenerator.adjustColor(brightness, contrast, saturation, hue));
+		c.drawBitmap(inBitmap, 0, 0, paint);
+		return outBitmap;
+	}
+
 	public static Bitmap getMaskedBitmap(final Bitmap source, final Bitmap mask) {
 		final BitmapFactory.Options options = new BitmapFactory.Options();
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
