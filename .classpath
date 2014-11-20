@@ -5,5 +5,6 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="D:/dataP/Android Keppler/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-21/android.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
