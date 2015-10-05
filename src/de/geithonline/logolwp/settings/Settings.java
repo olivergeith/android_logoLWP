@@ -93,17 +93,17 @@ public class Settings {
 		case BATT_STATUS_STYLE_VOLT:
 			return "Battery: " + (float) (battVoltage / 10) / 100 + "V";
 		case BATT_STATUS_STYLE_TEMP:
-			return "Battery: " + (float) battTemperature / 10 + "°C";
+			return "Battery: " + (float) battTemperature / 10 + "ï¿½C";
 		case BATT_STATUS_STYLE_TEMP_VOLT:
-			return "Battery: " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
+			return "Battery: " + (float) battTemperature / 10 + "ï¿½C, " + (float) (battVoltage / 10) / 100 + "V";
 		default:
 		case BATT_STATUS_STYLE_TEMP_VOLT_HEALTH:
-			return "Battery: health " + getHealthText(battHealth) + ", " + (float) battTemperature / 10 + "°C, " + (float) (battVoltage / 10) / 100 + "V";
+			return "Battery: health " + getHealthText(battHealth) + ", " + (float) battTemperature / 10 + "ï¿½C, " + (float) (battVoltage / 10) / 100 + "V";
 		}
 	}
 
 	public static String getBattTemperatureString() {
-		return "Temperature is " + (float) battTemperature / 10 + " °C";
+		return "Temperature is " + (float) battTemperature / 10 + " ï¿½C";
 	}
 
 	public static String getBattHealthString() {
@@ -224,7 +224,7 @@ public class Settings {
 		return prefs.getBoolean("show_zeiger", true);
 	}
 
-	public static int getAnimationDelaý() {
+	public static int getAnimationDelay() {
 		if (prefs == null) {
 			return 50;
 		}
@@ -232,7 +232,7 @@ public class Settings {
 		return thr;
 	}
 
-	public static int getAnimationDelaýOnCurrentLevel() {
+	public static int getAnimationDelayOnCurrentLevel() {
 		if (prefs == null) {
 			return 2500;
 		}
@@ -373,7 +373,7 @@ public class Settings {
 	// Styles
 	// #####################################################################################
 	public static IBitmapDrawer getBatteryStyle() {
-		// wenns den drawer noch nicht gibt, oder der style sich geändert hat
+		// wenns den drawer noch nicht gibt, oder der style sich geï¿½ndert hat
 		if (bitmapDrawer == null || !style.equals(getStyle())) {
 			// getting Style from Settings
 			style = getStyle();
